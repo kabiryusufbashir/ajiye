@@ -16,10 +16,10 @@ class CreateStaffTable extends Migration
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('client_id');
-            $table->string('staff_username');
+            $table->string('staff_username')->unique();
             $table->string('staff_password');
             $table->string('staff_name');
-            $table->string('staff_email');
+            $table->string('staff_email')->unique();
             $table->timestamps();
 
             $table->index('client_id');
