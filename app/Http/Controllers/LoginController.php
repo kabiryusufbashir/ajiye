@@ -32,7 +32,7 @@ class LoginController extends Controller
             ]);
 
             try{
-                if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+                if(Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])){
                     $request->session()->regenerate();
                     return redirect()->route('dashboard'); 
                 }else{
@@ -44,5 +44,11 @@ class LoginController extends Controller
         }catch(Expection $e){
             return back()->with(['error' => 'Please try again later! ('.$e.')']);
         }
+    }
+
+    public function logout(Request $request)
+    {   
+        Auth::guard('web')->logout();
+        return redirect()->route('front.index');
     }
 }
