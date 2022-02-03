@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.submit-button{
+    @apply text-xl mx-auto bg-green-400 rounded-full w-full py-3 text-white;
+}
+
+.input-field{
+    @apply border border-gray-300 rounded py-4 px-6 w-full my-2 focus:outline-none;
+}
