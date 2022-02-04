@@ -19,7 +19,8 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', [LoginController::class, 'index'])->name('front.index');
 
-//Set Up
+//Set Up/Login
+Route::get('/admin', [LoginController::class, 'adminlogin'])->name('admin-login');
 Route::post('/setup', [LoginController::class, 'setupsystem'])->name('setup-system');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

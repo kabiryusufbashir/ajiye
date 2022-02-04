@@ -11,7 +11,11 @@ use App\Models\User;
 class LoginController extends Controller
 {
     public function index(){
-        return view('auth.setup');    
+        return view('welcome');    
+    }
+
+    public function adminlogin(){
+        return view('auth.admin');    
     }
 
     public function setupsystem(Request $request)
