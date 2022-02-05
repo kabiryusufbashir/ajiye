@@ -28,7 +28,7 @@ Route::post('/clientlogin', [LoginController::class, 'loginclient'])->name('log-
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Client
-Route::get('/dashboard', [ClientController::class, 'index'])->name('dashboard-client')->middleware('auth:client');
+Route::get('/home', [ClientController::class, 'index'])->name('dashboard-client')->middleware('auth:client');
 
 //Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard-admin')->middleware('auth:web');

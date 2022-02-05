@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Client extends Authenticatable
 {
     use HasFactory;
 

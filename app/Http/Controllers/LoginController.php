@@ -79,7 +79,9 @@ class LoginController extends Controller
     }
 
     public function loginclient(Request $request){
-        $data = $request->validate([
+        // dd($request->client_password);
+
+        $credentials = $request->validate([
             'client_username' => ['required'],
             'client_password' => ['required'],
         ]);
@@ -90,7 +92,7 @@ class LoginController extends Controller
     
         if($client !== null){
             try{
-                if(Auth::guard('client')->attempt(['client_username' => $request->client_username, 'client_password' => $request->client_password])){
+                if(Auth::guard('client')->attempt(['client_username' => $request->client_username, 'password' => $request->client_password])){
                     $request->session()->regenerate();
                     return redirect()->route('dashboard-client');
                 }else{
