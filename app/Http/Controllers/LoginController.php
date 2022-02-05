@@ -90,12 +90,11 @@ class LoginController extends Controller
 
         $client = Client::where('client_username', $client_username)->first();
         
-        // dd($client);
         if($client !== null){
             try{
                 if(Auth::guard('client')->attempt(['client_username' => $request->client_username, 'password' => $request->client_password])){
                     $request->session()->regenerate();
-                    return redirect()->route('dashboard-client', ['client' => $client->client_username]);
+                    return redirect()->route('dashboard-client', ['client' => $client]);
                 }else{
                     return back()->with('error', 'Incorrect Username or Password');
                 }

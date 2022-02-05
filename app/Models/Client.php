@@ -23,4 +23,9 @@ class Client extends Authenticatable
         'client_address',
         'client_password',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'client_username'; //this will return user name as route 
+    }
 }
