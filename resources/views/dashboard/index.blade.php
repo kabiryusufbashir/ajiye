@@ -53,6 +53,12 @@
                             @enderror
                         </div>
                         <div>
+                            <input required type="text" name="client_address" value="{{old('client_address')}}" placeholder="Address" class="input-field">
+                            @error('client_address')
+                                {{$message}}
+                            @enderror
+                        </div>
+                        <div>
                             <input type="file" name="client_photo" value="{{old('client_photo')}}" class="input-field">
                             @error('photo')
                                 {{$message}}
