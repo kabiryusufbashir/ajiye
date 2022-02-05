@@ -50,6 +50,33 @@ class LoginController extends Controller
         }
     }
 
+    public function loginadmin(Request $request){
+        $data = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        $username = $request->username;
+
+        $admin = User::where('username', $username)->first();
+    
+        if($admin !== null){
+            try{
+                if(Auth::attempt(['username' => $request->username, 'password' => $request->password])){
+                    $request->session()->regenerate();
+                    return redirect()->route('dashboard-admin');
+                }else{
+                    return back()->with('error', 'Incorrect Username or Password');
+                }
+            }catch(Exception $e){
+                return redirect('/')->with('error', $e->getMessage());
+            }
+        }else{
+            return back()->with('error', 'Please contact your system adminstration!');
+        }
+        
+    }
+
     public function logout(Request $request)
     {   
         Auth::guard('web')->logout();

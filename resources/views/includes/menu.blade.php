@@ -3,7 +3,7 @@
     <h2 class="text-2xl py-3 border-b font-medium">Menu</h2>
     <ul>
         <li class="py-3 flex border-b cursor-pointer">
-            <a class="flex" href="{{ route('dashboard') }}">
+            <a class="flex" href="{{ route('dashboard-admin') }}">
                 <img class="w-7 mr-4" src="{{ asset('images/dashboard.png') }}" alt="Dashboard">
                 Dashboard
             </a>

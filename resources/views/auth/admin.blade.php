@@ -22,7 +22,7 @@
                     <div class="bg-green-400 py-4">
                         <img class="w-12 mx-auto" src="{{ asset('images/cashier.png') }}" alt="Cashier">
                     </div>
-                    <form action="" method="POST" class="px-6 lg:px-8 py-8">
+                    <form action="{{route('log-in-admin')}}" method="POST" class="px-6 lg:px-8 py-8">
                         @csrf
                         <div>
                             <input required type="username" name="username" value="{{old('username')}}" placeholder="Username" class="border border-gray-300 rounded py-4 px-6 w-full my-2 focus:outline-none">

@@ -22,10 +22,11 @@ Route::get('/', [LoginController::class, 'index'])->name('front.index');
 //Set Up/Login
 Route::get('/admin', [LoginController::class, 'adminlogin'])->name('admin-login');
 Route::post('/setup', [LoginController::class, 'setupsystem'])->name('setup-system');
+Route::post('/adminlogin', [LoginController::class, 'loginadmin'])->name('log-in-admin');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth:web');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard-admin')->middleware('auth:web');
 
 //Profile
 Route::get('/profile/{profile}/edit', [DashboardController::class, 'edit'])->name('admin.profile.edit')->middleware('auth:web');
