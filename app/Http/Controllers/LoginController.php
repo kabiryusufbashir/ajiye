@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\Client;
 
 class LoginController extends Controller
 {
@@ -65,6 +66,33 @@ class LoginController extends Controller
                 if(Auth::attempt(['username' => $request->username, 'password' => $request->password])){
                     $request->session()->regenerate();
                     return redirect()->route('dashboard-admin');
+                }else{
+                    return back()->with('error', 'Incorrect Username or Password');
+                }
+            }catch(Exception $e){
+                return redirect('/')->with('error', $e->getMessage());
+            }
+        }else{
+            return back()->with('error', 'Please contact your system adminstration!');
+        }
+
+    }
+
+    public function loginclient(Request $request){
+        $data = $request->validate([
+            'client_username' => ['required'],
+            'client_password' => ['required'],
+        ]);
+
+        $client_username = $request->client_username;
+
+        $client = Client::where('client_username', $client_username)->first();
+    
+        if($client !== null){
+            try{
+                if(Auth::guard('client')->attempt(['client_username' => $request->client_username, 'client_password' => $request->client_password])){
+                    $request->session()->regenerate();
+                    return redirect()->route('dashboard-client');
                 }else{
                     return back()->with('error', 'Incorrect Username or Password');
                 }

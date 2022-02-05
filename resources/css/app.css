@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .submit-button{
-    @apply text-xl mx-auto bg-green-400 rounded-full w-full py-3 text-white;
+    @apply text-lg mx-auto bg-green-400 rounded-full w-full py-3 text-white;
 }
 
 .input-field{

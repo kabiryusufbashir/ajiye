@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ClientController;
 
 
 /*
@@ -23,7 +24,11 @@ Route::get('/', [LoginController::class, 'index'])->name('front.index');
 Route::get('/admin', [LoginController::class, 'adminlogin'])->name('admin-login');
 Route::post('/setup', [LoginController::class, 'setupsystem'])->name('setup-system');
 Route::post('/adminlogin', [LoginController::class, 'loginadmin'])->name('log-in-admin');
+Route::post('/clientlogin', [LoginController::class, 'loginclient'])->name('log-in-client');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+//Client
+Route::get('/dashboard', [ClientController::class, 'index'])->name('dashboard-client')->middleware('auth:client');
 
 //Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard-admin')->middleware('auth:web');
