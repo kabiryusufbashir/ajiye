@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\Client;
+use App\Models\Staff;
 
 class DashboardController extends Controller
 {
@@ -25,7 +26,8 @@ class DashboardController extends Controller
         ]);
 
         $imageName = '/images/clients/'.time().'.'.$request->client_photo->extension();  
-        
+        $client_password = Hash::make('1234567890');
+
         try{
             Client::create(
                 [
@@ -35,12 +37,28 @@ class DashboardController extends Controller
                 'client_phone_number'=>$request->client_phone_number,
                 'client_address'=>$request->client_address,
                 'client_photo'=>$imageName,
-                'client_password' => Hash::make('1234567890')
+                'password' => $client_password 
                 ]);
                 
                 $request->client_photo->move('images/clients', $imageName);
                 
-                return redirect()->route('dashboard-admin')->with('success', 'Client Added');
+                try{
+                    
+                    $client = Client::where('client_username', $client_username)->first();
+                        Staff::create(
+                            [
+                                'client_id'=>$client->id,
+                                'staff_username'=>$request->client_username,
+                                'password'=>$request->client_password,
+                                'staff_name'=>$request->client_username,
+                                'staff_type'=> 1,
+                            ]
+                        );
+                    return redirect()->route('dashboard-admin')->with('success', 'Client Added');
+                
+                }catch(Exception $e){
+                    return redirect('/')->with('error', $e->getMessage());    
+                }
             
             }catch(Exception $e){
                 return redirect('/')->with('error', $e->getMessage());    

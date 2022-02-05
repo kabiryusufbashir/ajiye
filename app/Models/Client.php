@@ -21,7 +21,7 @@ class Client extends Authenticatable
         'client_phone_number',
         'client_photo',
         'client_address',
-        'client_password',
+        'password',
     ];
 
     public function getRouteKeyName()
