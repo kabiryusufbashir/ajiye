@@ -41,4 +41,4 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 
 //Client
-Route::get('/{client}', [ClientController::class, 'index'])->name('dashboard-client')->middleware('auth:client');
+Route::get('/home', [ClientController::class, 'index'])->name('dashboard-client')->middleware('auth:staff');

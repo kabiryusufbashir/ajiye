@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Models\Client;
+use App\Models\Staff;
 
 class LoginController extends Controller
 {
@@ -88,13 +89,14 @@ class LoginController extends Controller
 
         $client_username = $request->client_username;
 
-        $client = Client::where('client_username', $client_username)->first();
+        $client = Staff::where('staff_username', $client_username)->first();
+        $business = Client::where('id', $client->client_id)->first();
         
         if($client !== null){
             try{
-                if(Auth::guard('client')->attempt(['client_username' => $request->client_username, 'password' => $request->client_password])){
+                if(Auth::guard('staff')->attempt(['staff_username' => $request->client_username, 'password' => $request->client_password])){
                     $request->session()->regenerate();
-                    return redirect()->route('dashboard-client', ['client' => $client]);
+                        return redirect()->route('dashboard-client');
                 }else{
                     return back()->with('error', 'Incorrect Username or Password');
                 }

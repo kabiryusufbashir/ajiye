@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Staff;
+
 class Client extends Authenticatable
 {
     use HasFactory;
@@ -24,8 +26,7 @@ class Client extends Authenticatable
         'password',
     ];
 
-    public function getRouteKeyName()
-    {
-        return 'client_username'; //this will return user name as route 
+    public function staff(){
+        return $this->hasMany(Staff::class);
     }
 }
