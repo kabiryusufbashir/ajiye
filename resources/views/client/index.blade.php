@@ -10,22 +10,35 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="container">
-        <div class="text-xl welcome-title">
-            Welcome <b>{{ Auth::user()->staff_username }}</b>
+    <div class="mx-8 my-6">
+        <div class="text-xl mb-10 flex flex-row justify-between">
+            <div>
+                Welcome <b>{{ Auth::user()->staff_username }}</b>
+            </div>
+            <div>
+                Balance: <b>N140,000</b>
+            </div>
         </div>
-        <div class="flex flex-row justify-between">
-            <div class="boxes">
-                <i class="fas fa-user-friends"></i>
+        <div class="grid grid-cols-4 gap-4 text-center text-white text-lg">
+            <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-20 rounded-lg">
+                <i class="fas fa-book"></i><br>
+                Accounts
             </div>
-            <div class="boxes">
-                <i class="fas fa-file-invoice"></i>
+            <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-20 rounded-lg">
+                <i class="fas fa-file-invoice"></i><br>
+                New Record
             </div>
-            <div class="boxes">
-                <i class="fas fa-cash-register"></i>
+            <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-20 rounded-lg">
+                <i class="fas fa-cash-register"></i><br>
+                View Report
             </div>
-            <div class="boxes">
-                <i class="fas fa-user-circle"></i>
+            <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-20 rounded-lg">
+                <i class="fas fa-user-circle"></i><br>
+                Staff
+            </div>
+            <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-20 rounded-lg">
+                <i class="fas fa-sign-out-alt"></i><br>
+                Logout
             </div>
         </div>
     </div>
