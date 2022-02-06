@@ -44,12 +44,13 @@ class DashboardController extends Controller
                 
                 try{
                     
-                    $client = Client::where('client_username', $client_username)->first();
+                    $client = Client::where('client_username', $request->client_username)->first();
                         Staff::create(
                             [
                                 'client_id'=>$client->id,
                                 'staff_username'=>$request->client_username,
-                                'password'=>$request->client_password,
+                                'staff_email'=>$request->client_email,
+                                'password'=>$client_password,
                                 'staff_name'=>$request->client_username,
                                 'staff_type'=> 1,
                             ]

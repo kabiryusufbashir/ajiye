@@ -27,9 +27,6 @@ Route::post('/adminlogin', [LoginController::class, 'loginadmin'])->name('log-in
 Route::post('/clientlogin', [LoginController::class, 'loginclient'])->name('log-in-client');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-//Client
-Route::get('/{client}', [ClientController::class, 'index'])->name('dashboard-client')->middleware('auth:client');
-
 //Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard-admin')->middleware('auth:web');
 
@@ -41,3 +38,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
     //Client
     Route::post('/client-create', [DashboardController::class, 'clientcreate'])->name('client-create')->middleware('auth:web');
+
+
+//Client
+Route::get('/{client}', [ClientController::class, 'index'])->name('dashboard-client')->middleware('auth:client');
