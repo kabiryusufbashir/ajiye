@@ -569,6 +569,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-4 {
   margin-top: 1rem;
 }
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
 .block {
   display: block;
 }
@@ -869,6 +875,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);

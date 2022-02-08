@@ -8,6 +8,10 @@
             Balance: <b>N140,000</b>
         </div>
     </div>
+    <!-- Message  -->
+    <div class="py-1 mb-8 text-center">
+        @include('layouts.messages')
+    </div>
     <!-- Section  -->
     <div id="homeBar" class="block grid grid-cols-4 gap-4">
         <div class="menu-bar">
