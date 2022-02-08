@@ -1,4 +1,20 @@
+#container{
+    width: 100%;
+    float: left;
+}
+
+#nav{
+    width: 5%;
+    float: left;
+}
+
+#menu{
+    width: 90%;
+    margin-left: 3%;
+    float: left;
+}
+
 .fas{
-    font-size: 54px;
+    font-size: 40px;
     color: white;
 }
