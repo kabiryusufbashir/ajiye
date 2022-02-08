@@ -38,13 +38,14 @@
             </div>
             <!-- Add Sub Account  -->
             <div id="addSubAccountForm" class="hidden">
-                <form action="{{route('client-add-account')}}" method="POST" class="px-6 lg:px-8 py-8">
+                <form action="{{route('client-add-sub-account')}}" method="POST" class="px-6 lg:px-8 py-8">
                     @csrf
                     <div>
                         <label for="account_id" class="text-xl font-medium">Select Main Account</label><br>
                         <select required name="account_id" value="{{old('account_category_name')}}" placeholder="Sub Account Name" class="input-field">
+                            <option value="">--Select Main Account--</option>
                             @foreach($accounts as $account)
-                                <option value="{{ $account->id }}">{{ $account->account_name }}</option>
+                            <option class="py-2" value="{{ $account->id }}">{{ $account->account_name }}</option>
                             @endforeach
                         </select>
                         @error('account_id')

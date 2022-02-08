@@ -43,4 +43,5 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 //Client
 Route::get('/home', [ClientController::class, 'index'])->name('dashboard-client')->middleware('auth:staff');
 Route::post('/addaccount', [ClientController::class, 'addaccount'])->name('client-add-account')->middleware('auth:staff');
+Route::post('/addsubaccount', [ClientController::class, 'addsubaccount'])->name('client-add-sub-account')->middleware('auth:staff');
 Route::post('/logout-client', [ClientController::class, 'logout'])->name('logout-client');

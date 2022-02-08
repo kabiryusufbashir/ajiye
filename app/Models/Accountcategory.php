@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Accountcategory extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'account_id',
+        'account_category_name',
+    ];
 }
