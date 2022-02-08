@@ -16,17 +16,25 @@
         <!-- Menu  -->
         @include('includes.menu-front')
         <!-- Accounts  -->
-        <div id="accounts">
+        <div id="accounts" class="hidden">
             <div id="accounts-content">
                 <div id="accounts-header" class="bg-black text-white p-4 flex justify-between">
                     <span>Accounts</span>
-                    <span>X</span>
+                    <span id="closeModalAccount" class="cursor-pointer">X</span>
                 </div>
                 <div id="accounts-body" class="p-4 grid grid-cols-2 gap-4">
                     <div class="menu-bar">
                         <i class="fas fa-book"></i><br>
-                        Accounts
+                        Add Account
+                    </div>
+                    <div class="menu-bar">
+                        <i class="fas fa-book"></i><br>
+                        Sub Account
                     </div> 
+                    <div class="menu-bar">
+                        <i class="fas fa-book"></i><br>
+                        All Account
+                    </div>
                 </div>
             </div> 
         </div>

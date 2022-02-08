@@ -1,11 +1,11 @@
 <div id="nav" class="bg-black text-center py-12 h-screen text-white">
     <div id="homeNav" class="nav-front-menu">
-        <!-- <a href="{{ route('dashboard-client') }}"> -->
+        <a href="{{ route('dashboard-client') }}">
             <i class="fas fa-home"></i><br>
             Home
-        <!-- </a> -->
+        </a>
     </div>
-    <div class="nav-front-menu">
+    <div id="accountNav" class="nav-front-menu">
         <i class="fas fa-book"></i><br>
         Accounts
     </div>

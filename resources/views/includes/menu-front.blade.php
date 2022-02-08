@@ -36,7 +36,8 @@
         </div>
     </div>
     <!-- Trademark  -->
-    <div id="trademark" class="border-b my-6 text-center">
-        A Product of Team Piccolo v 1.0
+    <div id="trademark" class="flex flex-row justify-between border-b my-12 text-center flex justify-content">
+        <div>Imprest System</div>
+        <div>A Product of Team Piccolo v 1.0</div>
     </div>
 </div>
