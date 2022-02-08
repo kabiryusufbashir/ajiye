@@ -25,3 +25,7 @@
 .menu-bar{
     @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-20 rounded-lg;
 }
+
+.nav-front-menu{
+    @apply py-4 border-b cursor-pointer;
+}

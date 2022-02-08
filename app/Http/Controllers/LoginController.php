@@ -80,7 +80,6 @@ class LoginController extends Controller
     }
 
     public function loginclient(Request $request){
-        // dd($request->client_password);
 
         $credentials = $request->validate([
             'client_username' => ['required'],
@@ -90,7 +89,6 @@ class LoginController extends Controller
         $client_username = $request->client_username;
 
         $client = Staff::where('staff_username', $client_username)->first();
-        $business = Client::where('id', $client->client_id)->first();
         
         if($client !== null){
             try{

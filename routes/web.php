@@ -42,3 +42,4 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 //Client
 Route::get('/home', [ClientController::class, 'index'])->name('dashboard-client')->middleware('auth:staff');
+Route::post('/logout-client', [ClientController::class, 'logout'])->name('logout-client');

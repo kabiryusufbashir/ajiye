@@ -36,7 +36,7 @@
         </div>
     </div>
     <!-- Trademark  -->
-    <div class="border-b my-6 text-center">
+    <div id="trademark" class="border-b my-6 text-center">
         A Product of Team Piccolo v 1.0
     </div>
 </div>

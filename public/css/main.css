@@ -14,7 +14,16 @@
     float: left;
 }
 
+#nav .fas{
+    font-size: 22px;
+}
+
 .fas{
     font-size: 28px;
     color: white;
+}
+
+#trademark{
+    position: fixed;
+    bottom: 0px;
 }
