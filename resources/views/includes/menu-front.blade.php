@@ -9,7 +9,7 @@
         </div>
     </div>
     <!-- Section  -->
-    <div class="grid grid-cols-4 gap-4 text-center text-white text-lg">
+    <div id="homeBar" class="block grid grid-cols-4 gap-4">
         <div class="menu-bar">
             <i class="fas fa-home"></i><br>
             Home

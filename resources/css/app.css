@@ -23,7 +23,7 @@
 }
 
 .menu-bar{
-    @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-20 rounded-lg;
+    @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-20 rounded-lg text-center text-white text-lg;
 }
 
 .nav-front-menu{

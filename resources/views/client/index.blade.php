@@ -15,6 +15,22 @@
         @include('includes.nav-front')
         <!-- Menu  -->
         @include('includes.menu-front')
-    </div>  
+        <!-- Accounts  -->
+        <div id="accounts">
+            <div id="accounts-content">
+                <div id="accounts-header" class="bg-black text-white p-4 flex justify-between">
+                    <span>Accounts</span>
+                    <span>X</span>
+                </div>
+                <div id="accounts-body" class="p-4 grid grid-cols-2 gap-4">
+                    <div class="menu-bar">
+                        <i class="fas fa-book"></i><br>
+                        Accounts
+                    </div> 
+                </div>
+            </div> 
+        </div>
+    </div>
+    <script src="{{ asset('js/main.js') }}"></script>  
 </body>
 </html>
