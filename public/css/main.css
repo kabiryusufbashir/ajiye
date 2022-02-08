@@ -4,18 +4,22 @@
 }
 
 #nav{
-    width: 5%;
+    width: 6%;
     float: left;
 }
 
 #menu{
-    width: 90%;
+    width: 89%;
     margin-left: 3%;
     float: left;
 }
 
 #nav .fas{
-    font-size: 22px;
+    font-size: 20px;
+}
+
+#nav{
+    font-size: 14px;
 }
 
 .fas{
