@@ -20,7 +20,7 @@ class ClientController extends Controller
         $client = Auth::guard('staff')->user()->client_id;
         $business = Client::where('id', $client)->first();
         $accounts = Account::where('client_id', $client)->get();
-
+        
         return view('client.index', compact('business', 'accounts'));
     }
 

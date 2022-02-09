@@ -596,6 +596,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .flex {
   display: flex;
 }
+.table {
+  display: table;
+}
 .grid {
   display: grid;
 }
@@ -677,6 +680,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .flex-row {
   flex-direction: row;
 }
@@ -731,6 +737,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-b-4 {
   border-bottom-width: 4px;
 }
+.border-r {
+  border-right-width: 1px;
+}
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
@@ -784,6 +793,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .p-2 {
   padding: 0.5rem;
+}
+.p-3 {
+  padding: 0.75rem;
 }
 .py-4 {
   padding-top: 1rem;

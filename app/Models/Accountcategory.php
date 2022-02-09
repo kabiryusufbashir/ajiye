@@ -13,4 +13,8 @@ class Accountcategory extends Model
         'account_id',
         'account_category_name',
     ];
+
+    public function account(){
+        return $this->belongsTo(Account::class);
+    }
 }

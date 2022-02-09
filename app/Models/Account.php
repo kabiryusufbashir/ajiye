@@ -13,4 +13,8 @@ class Account extends Model
         'client_id',
         'account_name',
     ];
+
+    public function accountcategory(){
+        return $this->hasMany(Accountcategory::class);
+    }
 }

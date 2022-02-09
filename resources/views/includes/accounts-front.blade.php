@@ -15,7 +15,7 @@
                     <i class="fas fa-book"></i><br>
                     Sub Account
                 </div> 
-                <div class="menu-bar">
+                <div id="allAccount" class="menu-bar">
                     <i class="fas fa-book"></i><br>
                     All Account
                 </div>
@@ -63,6 +63,31 @@
                         <button class="submit-button">Add Account</button>
                     </div>
                 </form>
+            </div>
+            <!-- All Accounts  -->
+            <div id="allAccountSpace" class="hidden">
+                <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 grid grid-cols-3 gap-4 text-white p-3">
+                    <div class="border-r">S/No</div>
+                    <div class="border-r">Account</div>
+                    <div>Sub Account</div>
+                </div>
+                <div class="p-3 grid grid-cols-3 bg-white shadow-lg">
+                    @foreach($accounts as $account)
+                        <div class="border-b py-2">
+                            {{ $loop->index + 1 }}
+                        </div>
+                        <div class="border-b py-2">
+                            {{ $account->account_name }}
+                        </div>
+                        <div class="border-b">
+                            @foreach( \App\Models\Accountcategory::select('account_category_name')->where('account_id', $account->id)->get() as $cate )
+                                <div class="border-b py-2">
+                                    {{ $cate->account_category_name }}
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div> 
