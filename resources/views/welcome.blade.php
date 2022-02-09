@@ -7,7 +7,7 @@
             <div class="bg-black py-4">
                 <img class="w-12 mx-auto" src="{{ asset('images/cashier.png') }}" alt="Cashier">
             </div>
-            <form action="{{route('log-in-client')}}" method="POST" class="px-6 lg:px-8 py-8">
+            <form action="{{route('log-in-client')}}" method="POST" class="bg-white px-6 lg:px-8 py-8">
                 @csrf
                 <div>
                     <input required type="username" name="client_username" value="{{old('client_username')}}" placeholder="Username" class="input-field">

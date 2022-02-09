@@ -10,13 +10,18 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
     </head>
-    <body class="mx-12">
-        <div class="grid grid-cols-2 gap-4">
+    <body class="mx-12 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+        <div class="grid grid-cols-2 gap-4 my-36">
             <!-- Product Logo  -->
-            <div class="text-5xl">
-                <img src="{{ asset('images/ajiye.jpg') }}" alt="Ajiye">
+            <div class="text-5xl my-auto">
+                <img src="{{ asset('images/logo.png') }}" alt="Ajiye">
             </div>
             @yield('login')
+        </div>
+        <!-- Trademark  -->
+        <div id="trademark" class="text-white flex flex-row justify-between border-b my-12 text-center flex justify-content">
+            <div>Imprest System</div>
+            <div>A Product of Team Piccolo v 1.0</div>
         </div>
     </body>
 </html>
