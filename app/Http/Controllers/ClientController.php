@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Client;
 use App\Models\Account;
 use App\Models\Accountcategory;
+use App\Models\Record;
 
 class ClientController extends Controller
 {
@@ -20,7 +21,7 @@ class ClientController extends Controller
         $client = Auth::guard('staff')->user()->client_id;
         $business = Client::where('id', $client)->first();
         $accounts = Account::where('client_id', $client)->orderby('account_name', 'asc')->get();
-        $accountcategory = Accountcategory::select('account_category_name')->orderby('account_category_name', 'asc')->get();
+        $accountcategory = Accountcategory::orderby('account_category_name', 'asc')->get();
         
         return view('client.index', compact('business', 'accounts', 'accountcategory'));
     }
@@ -78,6 +79,39 @@ class ClientController extends Controller
             }
         }else{
             return redirect()->route('dashboard-client')->with('error', $account_name.' already exists');
+        }
+    }
+
+    public function addrecord(Request $request){
+        $data = $request->validate([
+            'account_id' => ['required'],
+            'accountcategory_id' => [''],
+            'record_date' => ['required'],
+            'record_amount' => ['required'],
+            'record_receipt_no' => ['required'],
+        ]);
+
+        $record_date = $data['record_date'];
+        $account_id = $data['account_id'];
+        $accountcategory_id = $data['accountcategory_id'];
+        $record_amount = $data['record_amount'];
+        $record_receipt_no = $data['record_receipt_no'];
+        $staff_id = Auth::guard('staff')->user()->id;
+        
+        try{
+            Record::create([
+                'account_id' => $account_id,
+                'accountcategory_id' => $accountcategory_id,
+                'record_date' => $record_date,
+                'record_amount' => $record_amount,
+                'record_receipt_no' => $record_receipt_no,
+                'staff_id' => $staff_id
+            ]);
+
+            return redirect()->route('dashboard-client')->with('success', 'Imprest Stored'); 
+            
+        }catch(Expection $e){
+            return back()->with(['error' => 'Please try again later! ('.$e.')']);
         }
     }
 

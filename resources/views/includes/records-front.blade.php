@@ -7,12 +7,12 @@
         <div id="records-body" class="p-4">
             <!-- Add record  -->
             <div id="addRecordForm" class="hidden">
-                <form id="storeRecordForm" action="{{route('client-add-account')}}" method="POST" class="px-6 lg:px-8 py-8">
+                <form id="storeRecordForm" action="{{route('client-add-record')}}" method="POST" class="px-6 lg:px-8 py-8">
                     @csrf
                     <div>
-                        <label for="date" class="text-lg font-medium">Date</label><br>
-                        <input required type="date" name="date" value="{{old('date')}}" placeholder="Date" class="input-field">
-                        @error('date')
+                        <label for="record_date" class="text-lg font-medium">Date</label><br>
+                        <input required type="date" name="record_date" value="{{old('record_date')}}" placeholder="Date" class="input-field">
+                        @error('record_date')
                             {{$message}}
                         @enderror
                     </div>
@@ -43,16 +43,16 @@
                         </div>
                     </div>
                     <div>
-                        <label for="amount" class="text-lg font-medium">Amount</label><br>
-                        <input required type="number" name="amount" value="{{old('amount')}}" placeholder="Amount" class="input-field">
-                        @error('amount')
+                        <label for="record_amount" class="text-lg font-medium">Amount</label><br>
+                        <input required type="number" name="record_amount" value="{{old('record_amount')}}" placeholder="Amount" class="input-field">
+                        @error('record_amount')
                             {{$message}}
                         @enderror
                     </div>
                     <div>
-                        <label for="receipt_no" class="text-lg font-medium">Receipt No</label><br>
-                        <input required type="text" name="receipt_no" value="{{old('receipt_no')}}" placeholder="Receipt No" class="input-field">
-                        @error('receipt_no')
+                        <label for="record_receipt_no" class="text-lg font-medium">Receipt No</label><br>
+                        <input required type="text" name="record_receipt_no" value="{{old('record_receipt_no')}}" placeholder="Receipt No" class="input-field">
+                        @error('record_receipt_no')
                             {{$message}}
                         @enderror
                     </div>

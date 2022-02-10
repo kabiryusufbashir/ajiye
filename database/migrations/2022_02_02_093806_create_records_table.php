@@ -17,7 +17,6 @@ class CreateRecordsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('accountcategory_id');
-            $table->string('record_received');
             $table->string('record_date');
             $table->string('record_amount');
             $table->string('record_receipt_no');
