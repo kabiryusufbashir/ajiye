@@ -10,7 +10,7 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
     </head>
-    <body class="mx-12 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <body class="mx-12 yusuf-bg">
         <div class="grid grid-cols-2 gap-4 my-36">
             <!-- Product Logo  -->
             <div class="text-5xl my-auto">

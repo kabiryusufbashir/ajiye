@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .submit-button{
-    @apply text-lg mx-auto bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full w-full py-3 text-white;
+    @apply text-lg mx-auto bg-gradient-to-r from-green-800 via-green-600 to-green-400 rounded-full w-full py-3 text-white;
 }
 
 .input-field{
@@ -23,9 +23,13 @@
 }
 
 .menu-bar{
-    @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-20 rounded-lg text-center text-white text-lg cursor-pointer;
+    @apply bg-gradient-to-r from-green-800 via-green-600 to-green-400 py-20 rounded-lg text-center text-white text-lg cursor-pointer;
 }
 
 .nav-front-menu{
     @apply py-4 border-b cursor-pointer;
+}
+
+.yusuf-bg{
+    @apply bg-gradient-to-l from-green-800 via-green-600 to-green-400;
 }

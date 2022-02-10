@@ -1,4 +1,4 @@
-<div id="nav" class="bg-black text-center py-12 h-screen text-white">
+<div id="nav" class="bg-gray-900 text-center py-12 h-screen text-white">
     <div id="homeNav" class="nav-front-menu">
         <a href="{{ route('dashboard-client') }}">
             <i class="fas fa-home"></i><br>
@@ -9,7 +9,7 @@
         <i class="fas fa-book"></i><br>
         Accounts
     </div>
-    <div class="nav-front-menu">
+    <div id="recordNav" class="nav-front-menu">
         <i class="fas fa-file-invoice"></i><br>
         New Record
     </div>

@@ -1,6 +1,6 @@
 <div id="accounts" class="hidden">
     <div id="accounts-content">
-        <div id="accounts-header" class="bg-black text-white p-4 flex justify-between">
+        <div id="accounts-header" class="bg-gray-900 text-white p-4 flex justify-between">
             <span>Accounts</span>
             <span id="closeModalAccount" class="cursor-pointer">X</span>
         </div>
@@ -66,7 +66,7 @@
             </div>
             <!-- All Accounts  -->
             <div id="allAccountSpace" class="hidden">
-                <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 grid grid-cols-3 gap-4 text-white p-3">
+                <div class="yusuf-bg grid grid-cols-3 gap-4 text-white p-3">
                     <div class="border-r">S/No</div>
                     <div class="border-r">Account</div>
                     <div>Sub Account</div>

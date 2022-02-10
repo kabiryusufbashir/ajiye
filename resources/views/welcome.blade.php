@@ -4,7 +4,7 @@
     <!-- Login Form  -->
     <div class="w-full flex justify-between leading-snug items-center">
         <div class="w-full lg:w-2/3 text-center mx-auto shadow-lg">
-            <div class="bg-black py-4">
+            <div class="yusuf-bg py-4">
                 <img class="w-12 mx-auto" src="{{ asset('images/cashier.png') }}" alt="Cashier">
             </div>
             <form action="{{route('log-in-client')}}" method="POST" class="bg-white px-6 lg:px-8 py-8">
