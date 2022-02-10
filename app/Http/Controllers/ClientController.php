@@ -19,9 +19,10 @@ class ClientController extends Controller
     public function index(){   
         $client = Auth::guard('staff')->user()->client_id;
         $business = Client::where('id', $client)->first();
-        $accounts = Account::where('client_id', $client)->get();
+        $accounts = Account::where('client_id', $client)->orderby('account_name', 'asc')->get();
+        $accountcategory = Accountcategory::select('account_category_name')->orderby('account_category_name', 'asc')->get();
         
-        return view('client.index', compact('business', 'accounts'));
+        return view('client.index', compact('business', 'accounts', 'accountcategory'));
     }
 
     public function addaccount(Request $request){
