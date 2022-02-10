@@ -17,7 +17,8 @@
         @include('includes.menu-front')
         <!-- Accounts  -->
         @include('includes.accounts-front')
-    
+        <!-- Record  -->
+        @include('includes.records-front')
     </div>
     <script src="{{ asset('js/main.js') }}"></script>  
 </body>

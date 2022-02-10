@@ -60,4 +60,18 @@ let closeModalAccount = document.querySelector('#closeModalAccount')
     })
 
 //Record Module
+let recordNav = document.querySelector('#recordNav')
+let records = document.querySelector('#records')
+let addRecordForm = document.querySelector('#addRecordForm')
+let closeModalRecord = document.querySelector('#closeModalRecord')
 
+    // Record Navigation 
+    recordNav.addEventListener('click', ()=>{
+        records.classList.remove('hidden')
+        addRecordForm.classList.remove('hidden')
+    })
+
+    // Close Modal 
+    closeModalRecord.addEventListener('click', ()=>{
+        records.classList.add('hidden')
+    })
