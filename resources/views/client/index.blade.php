@@ -19,6 +19,8 @@
         @include('includes.accounts-front')
         <!-- Record  -->
         @include('includes.records-front')
+        <!-- Imprest  -->
+        @include('includes.imprest-front')
     </div>
     <script src="{{ asset('js/main.js') }}"></script>  
 </body>

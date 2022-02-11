@@ -75,3 +75,20 @@ let closeModalRecord = document.querySelector('#closeModalRecord')
     closeModalRecord.addEventListener('click', ()=>{
         records.classList.add('hidden')
     })
+
+//Imprest Module
+let imprestNav = document.querySelector('#imprestNav')
+let imprest = document.querySelector('#imprest')
+let addImprestForm = document.querySelector('#addImprestForm')
+let closeModalImprest = document.querySelector('#closeModalImprest')
+
+    // Record Navigation 
+    imprestNav.addEventListener('click', ()=>{
+        imprest.classList.remove('hidden')
+        addImprestForm.classList.remove('hidden')
+    })
+
+    // Close Modal 
+    closeModalImprest.addEventListener('click', ()=>{
+        imprest.classList.add('hidden')
+    })

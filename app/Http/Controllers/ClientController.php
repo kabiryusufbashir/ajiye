@@ -9,6 +9,7 @@ use App\Models\Client;
 use App\Models\Account;
 use App\Models\Accountcategory;
 use App\Models\Record;
+use App\Models\Imprest;
 
 class ClientController extends Controller
 {
@@ -26,6 +27,7 @@ class ClientController extends Controller
         return view('client.index', compact('business', 'accounts', 'accountcategory'));
     }
 
+    //Account
     public function addaccount(Request $request){
         $data = $request->validate([
             'account_name' => ['required'],
@@ -53,6 +55,7 @@ class ClientController extends Controller
         }
     }
 
+    //Sub Account
     public function addsubaccount(Request $request){
         $data = $request->validate([
             'account_id' => ['required'],
@@ -82,6 +85,29 @@ class ClientController extends Controller
         }
     }
 
+    //Imprest
+    public function addimprest(Request $request){
+        $data = $request->validate([
+            'imprest_amount' => ['required'],
+        ]);
+
+        $client = Auth::guard('staff')->user()->client_id;
+        $imprest_amount = $data['imprest_amount'];
+
+        try{
+            Imprest::create([
+                'client_id' => $client,
+                'imprest_amount' => $data['imprest_amount'],
+            ]);
+
+            return redirect()->route('dashboard-client')->with('success', $imprest_amount.' Added'); 
+            
+        }catch(Expection $e){
+            return back()->with(['error' => 'Please try again later! ('.$e.')']);
+        }
+    }
+
+    //Record
     public function addrecord(Request $request){
         $data = $request->validate([
             'account_id' => ['required'],
@@ -115,6 +141,7 @@ class ClientController extends Controller
         }
     }
 
+    //Logout
     public function logout(Request $request)
     {   
         Auth::guard('staff')->logout();

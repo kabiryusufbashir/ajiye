@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Imprest extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'client_id',
+        'imprest_amount'
+    ];
 }

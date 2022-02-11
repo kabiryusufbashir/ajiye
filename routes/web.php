@@ -45,4 +45,5 @@ Route::get('/home', [ClientController::class, 'index'])->name('dashboard-client'
 Route::post('/addaccount', [ClientController::class, 'addaccount'])->name('client-add-account')->middleware('auth:staff');
 Route::post('/addsubaccount', [ClientController::class, 'addsubaccount'])->name('client-add-sub-account')->middleware('auth:staff');
 Route::post('/addrecord', [ClientController::class, 'addrecord'])->name('client-add-record')->middleware('auth:staff');
+Route::post('/addimprest', [ClientController::class, 'addimprest'])->name('client-add-imprest')->middleware('auth:staff');
 Route::post('/logout-client', [ClientController::class, 'logout'])->name('logout-client');
