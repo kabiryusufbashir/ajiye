@@ -9,6 +9,10 @@
         <i class="fas fa-book"></i><br>
         Accounts
     </div>
+    <div class="nav-front-menu">
+        <i class="fas fa-file-invoice"></i><br>
+        New Imprest 
+    </div>
     <div id="recordNav" class="nav-front-menu">
         <i class="fas fa-file-invoice"></i><br>
         New Record
