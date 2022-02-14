@@ -29,4 +29,9 @@ class Client extends Authenticatable
     public function staff(){
         return $this->hasMany(Staff::class);
     }
+
+    public function imprest(){
+        return $this->hasMany(Imprest::class);
+    }
+
 }

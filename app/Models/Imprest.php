@@ -13,4 +13,8 @@ class Imprest extends Model
         'client_id',
         'imprest_amount'
     ];
+
+    public function client(){
+        return $this->belongsTo(Client::class, 'foreign_key', 'owner_key');
+    }
 }

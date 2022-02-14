@@ -10,6 +10,7 @@ use App\Models\Account;
 use App\Models\Accountcategory;
 use App\Models\Record;
 use App\Models\Imprest;
+use DB;
 
 class ClientController extends Controller
 {
@@ -24,7 +25,12 @@ class ClientController extends Controller
         $accounts = Account::where('client_id', $client)->orderby('account_name', 'asc')->get();
         $accountcategory = Accountcategory::orderby('account_category_name', 'asc')->get();
         
-        return view('client.index', compact('business', 'accounts', 'accountcategory'));
+        $imprest = Imprest::where('client_id', $client)->sum('imprest_amount');
+        // $record = DB::select("");
+
+        // dd($imprest);
+
+        return view('client.index', compact('business', 'accounts', 'accountcategory', 'imprest'));
     }
 
     //Account
