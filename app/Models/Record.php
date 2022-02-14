@@ -11,6 +11,7 @@ class Record extends Model
 
     protected $fillable = [
         'account_id',
+        'client_id',
         'accountcategory_id',
         'record_date',
         'record_amount',

@@ -5,7 +5,7 @@
             Welcome <b>{{ Auth::user()->staff_username }}</b>
         </div>
         <div>
-            Balance: <b>N{{ $imprest }}</b>
+            Balance: <b>N{{ $balance }}</b>
         </div>
     </div>
     <!-- Message  -->

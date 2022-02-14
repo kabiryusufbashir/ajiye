@@ -26,11 +26,12 @@ class ClientController extends Controller
         $accountcategory = Accountcategory::orderby('account_category_name', 'asc')->get();
         
         $imprest = Imprest::where('client_id', $client)->sum('imprest_amount');
-        // $record = DB::select("");
+        $records = Record::where('client_id', $client)->sum('record_amount');
+        
+        //Getting the balance 
+        $balance = $imprest - $records;
 
-        // dd($imprest);
-
-        return view('client.index', compact('business', 'accounts', 'accountcategory', 'imprest'));
+        return view('client.index', compact('business', 'accounts', 'accountcategory', 'balance'));
     }
 
     //Account
@@ -129,10 +130,12 @@ class ClientController extends Controller
         $record_amount = $data['record_amount'];
         $record_receipt_no = $data['record_receipt_no'];
         $staff_id = Auth::guard('staff')->user()->id;
+        $client_id = Auth::guard('staff')->user()->client_id;
         
         try{
             Record::create([
                 'account_id' => $account_id,
+                'client_id' => $client_id,
                 'accountcategory_id' => $accountcategory_id,
                 'record_date' => $record_date,
                 'record_amount' => $record_amount,
