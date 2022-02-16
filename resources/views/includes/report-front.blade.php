@@ -10,9 +10,20 @@
                 <form id="storeImprestForm" action="{{route('client-add-imprest')}}" method="POST" class="px-6 lg:px-8 py-8">
                     @csrf
                     <div>
-                        <label for="imprest_amount" class="text-lg font-medium">Amount</label><br>
-                        <input required type="number" name="imprest_amount" value="{{old('imprest_amount')}}" placeholder="Amount" class="input-field">
-                        @error('imprest_amount')
+                        <label for="month" class="text-lg font-medium">Month</label><br>
+                        <select required type="text" name="month" value="{{old('month')}}" placeholder="Month" class="input-field">
+                            <option value="">12</option>
+                        </select>
+                        @error('month')
+                            {{$message}}
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="year" class="text-lg font-medium">Year</label><br>
+                        <select required type="text" name="year" value="{{old('year')}}" placeholder="Year" class="input-field">
+                            <option value="">12</option>
+                        </select>
+                        @error('year')
                             {{$message}}
                         @enderror
                     </div>

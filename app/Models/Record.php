@@ -16,6 +16,9 @@ class Record extends Model
         'record_date',
         'record_amount',
         'record_receipt_no',
-        'staff_id'
+        'staff_id',
+        'day',
+        'month',
+        'year'
     ];
 }

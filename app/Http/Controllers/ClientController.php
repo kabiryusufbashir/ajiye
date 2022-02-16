@@ -30,8 +30,12 @@ class ClientController extends Controller
         
         //Getting the balance 
         $balance = $imprest - $records;
+        
+        //View Report
+        $view_report = Record::select('created_at')->where('client_id', $client)->get();
+        // dd($view_report);
 
-        return view('client.index', compact('business', 'accounts', 'accountcategory', 'balance'));
+        return view('client.index', compact('business', 'accounts', 'accountcategory', 'balance', 'view_report'));
     }
 
     //Account
@@ -140,7 +144,10 @@ class ClientController extends Controller
                 'record_date' => $record_date,
                 'record_amount' => $record_amount,
                 'record_receipt_no' => $record_receipt_no,
-                'staff_id' => $staff_id
+                'staff_id' => $staff_id,
+                'day' => date('d'),
+                'month' => date('M'),
+                'year' => date('Y')
             ]);
 
             return redirect()->route('dashboard-client')->with('success', 'Imprest Stored'); 
