@@ -32,10 +32,11 @@ class ClientController extends Controller
         $balance = $imprest - $records;
         
         //View Report
-        $view_report = Record::select('created_at')->where('client_id', $client)->get();
+        $months = Record::select('month')->where('client_id', $client)->distinct()->get();
+        $years = Record::select('year')->where('client_id', $client)->distinct()->get();
         // dd($view_report);
 
-        return view('client.index', compact('business', 'accounts', 'accountcategory', 'balance', 'view_report'));
+        return view('client.index', compact('business', 'accounts', 'accountcategory', 'balance', 'months', 'years'));
     }
 
     //Account
@@ -146,7 +147,7 @@ class ClientController extends Controller
                 'record_receipt_no' => $record_receipt_no,
                 'staff_id' => $staff_id,
                 'day' => date('d'),
-                'month' => date('M'),
+                'month' => date('m'),
                 'year' => date('Y')
             ]);
 
@@ -155,6 +156,11 @@ class ClientController extends Controller
         }catch(Expection $e){
             return back()->with(['error' => 'Please try again later! ('.$e.')']);
         }
+    }
+
+    //View Report
+    public function viewreport(Request $request){
+        dd('Hit!');
     }
 
     //Logout
