@@ -16,31 +16,8 @@
                             {{$message}}
                         @enderror
                     </div>
-                    <div class="grid grid-cols-2 gap-4 my-2">
-                        <div>
-                            <label for="account_id" class="text-lg font-medium">Account</label><br>
-                            <select required name="account_id" value="{{old('account_id')}}" placeholder="Account" class="input-field">
-                                <option value="">--Select Account--</option>
-                                @foreach($accounts as $account)
-                                <option class="py-2" value="{{ $account->id }}">{{ $account->account_name }}</option>
-                                @endforeach
-                            </select>
-                            @error('account_id')
-                                {{$message}}
-                            @enderror
-                        </div>
-                        <div>
-                            <label for="accountcategory_id" class="text-lg font-medium">Sub Account</label><br>
-                            <select name="accountcategory_id" value="{{old('accountcategory_id')}}" placeholder="Sub Account" class="input-field">
-                                <option value="">--Select Sub Account--</option>
-                                @foreach($accountcategory as $category)
-                                <option class="py-2" value="{{ $category->id }}">{{ $category->account_category_name }}</option>
-                                @endforeach
-                            </select>
-                            @error('accountcategory_id')
-                                {{$message}}
-                            @enderror
-                        </div>
+                    <div id="account">
+                        <sub-account></sub-account>
                     </div>
                     <div>
                         <label for="record_amount" class="text-lg font-medium">Amount</label><br>

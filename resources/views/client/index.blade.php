@@ -22,6 +22,7 @@
         <!-- Imprest  -->
         @include('includes.imprest-front')
     </div>
-    <script src="{{ asset('js/main.js') }}"></script>  
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>  
 </body>
 </html>

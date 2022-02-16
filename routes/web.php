@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\APIController;
 
 
 /*
@@ -47,3 +48,7 @@ Route::post('/addsubaccount', [ClientController::class, 'addsubaccount'])->name(
 Route::post('/addrecord', [ClientController::class, 'addrecord'])->name('client-add-record')->middleware('auth:staff');
 Route::post('/addimprest', [ClientController::class, 'addimprest'])->name('client-add-imprest')->middleware('auth:staff');
 Route::post('/logout-client', [ClientController::class, 'logout'])->name('logout-client');
+
+    // API 
+    Route::get('/api/getAccount', [APIController::class, 'getAccount']);
+    Route::get('/api/getSubaccount', [APIController::class, 'getSubaccount']);
