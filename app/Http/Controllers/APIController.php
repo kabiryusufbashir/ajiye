@@ -21,7 +21,6 @@ class APIController extends Controller
     }
 
     public function getSubaccount(Request $request){
-        $client = Auth::guard('staff')->user()->client_id;
         $data = Accountcategory::where('account_id', $request->account_id)->orderby('account_category_name', 'asc')->get();
         return response()->json($data);
     }

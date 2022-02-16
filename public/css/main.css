@@ -27,7 +27,7 @@
     color: white;
 }
 
-#accounts, #records, #imprest{
+#accounts, #records, #imprest, #viewReport{
     background-color: rgba(0, 0, 0, 0.8);
     position: fixed;
     z-index: 300;

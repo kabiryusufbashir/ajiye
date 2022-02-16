@@ -21,6 +21,8 @@
         @include('includes.records-front')
         <!-- Imprest  -->
         @include('includes.imprest-front')
+        <!-- View Report  -->
+        @include('includes.report-front')
     </div>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ mix('/js/app.js') }}"></script>  

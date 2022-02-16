@@ -92,3 +92,20 @@ let closeModalImprest = document.querySelector('#closeModalImprest')
     closeModalImprest.addEventListener('click', ()=>{
         imprest.classList.add('hidden')
     })
+
+// View Report 
+let viewReportNav = document.querySelector('#viewReportNav')
+let viewReport = document.querySelector('#viewReport')
+let viewReportForm = document.querySelector('#viewReportForm')
+let closeModalReport = document.querySelector('#closeModalReport')
+
+    // Record Navigation 
+    viewReportNav.addEventListener('click', ()=>{
+        viewReport.classList.remove('hidden')
+        viewReportForm.classList.remove('hidden')
+    })
+
+    // Close Modal 
+    closeModalReport.addEventListener('click', ()=>{
+        viewReport.classList.add('hidden')
+    })

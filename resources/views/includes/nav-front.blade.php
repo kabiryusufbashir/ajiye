@@ -17,7 +17,7 @@
         <i class="fas fa-file-invoice"></i><br>
         New Record
     </div>
-    <div class="nav-front-menu">
+    <div id="viewReportNav" class="nav-front-menu">
         <i class="fas fa-cash-register"></i><br>        
         View Report
     </div>
