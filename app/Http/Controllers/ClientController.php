@@ -189,7 +189,7 @@ class ClientController extends Controller
         $year = $data['year'];
 
         $report_columns = Account::where('client_id', $client)->get();
-        $reports = Record::where('month', $month)->where('year', $year)->where('client_id', $client)->get();
+        $reports = Record::where('month', $month)->where('year', $year)->where('client_id', $client)->orderby('day', 'asc')->get();
         // dd($report);
 
         return view('client.view-report', compact('report_columns', 'month', 'year', 'business', 'accounts', 'accountcategory', 'balance', 'months', 'years', 'reports'));

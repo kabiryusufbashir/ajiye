@@ -19,24 +19,26 @@
                     <div id="account">
                         <sub-account></sub-account>
                     </div>
-                    <div>
-                        <label for="record_amount" class="text-lg font-medium">Amount</label><br>
-                        <input required type="number" name="record_amount" value="{{old('record_amount')}}" placeholder="Amount" class="input-field">
-                        @error('record_amount')
-                            {{$message}}
-                        @enderror
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="record_amount" class="text-lg font-medium">Amount</label><br>
+                            <input required type="number" name="record_amount" value="{{old('record_amount')}}" placeholder="Amount" class="input-field">
+                            @error('record_amount')
+                                {{$message}}
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="record_receipt_no" class="text-lg font-medium">Voucher No</label><br>
+                            <input required type="text" name="record_receipt_no" value="{{old('record_receipt_no')}}" placeholder="Receipt No" class="input-field">
+                            @error('record_receipt_no')
+                                {{$message}}
+                            @enderror
+                        </div>
                     </div>
                     <div>
                         <label for="details" class="text-lg font-medium">Details</label><br>
                         <input required type="text" name="details" value="{{old('details')}}" placeholder="Details" class="input-field">
                         @error('details')
-                            {{$message}}
-                        @enderror
-                    </div>
-                    <div>
-                        <label for="record_receipt_no" class="text-lg font-medium">Voucher No</label><br>
-                        <input required type="text" name="record_receipt_no" value="{{old('record_receipt_no')}}" placeholder="Receipt No" class="input-field">
-                        @error('record_receipt_no')
                             {{$message}}
                         @enderror
                     </div>

@@ -35,8 +35,8 @@
                 @foreach($reports as $report)
                     <tr class="text-left">
                         <td>{{ $loop->index + 1 }}</td>
-                        <td>{{ date('d/m/Y', strtotime($report->created_at)) }}</td>
-                        <td>{{ date('d/m/Y', strtotime($report->created_at)) }}</td>
+                        <td>{{ $report->day }}</td>
+                        <td>{{ !empty($report->details) ? $report->details : 'Nill'}}</td>
                         <td>{{ $report->record_amount }}</td>
                         @foreach($report_columns as $column)
                             <td>
@@ -47,6 +47,18 @@
                         @endforeach
                     </tr>
                 @endforeach
+                <!-- Total  -->
+                <tr class="text-left">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>{{ $reports->sum('record_amount') }}</th>
+                    @foreach($report_columns as $column)
+                        <th>
+                            {{ \App\Models\Record::where('account_id', $column->id)->where('month', $month)->where('year', $year)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount') }}
+                        </th>
+                    @endforeach
+                </tr>
             </table>
         </div>
     </div>
