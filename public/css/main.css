@@ -50,3 +50,9 @@
     width: 750px;
     background: #FFFFFF;
 }
+
+table, th, td{
+    border: 1px solid #96D4D4;
+    padding: 1%;
+    border-collapse: collapse;
+}

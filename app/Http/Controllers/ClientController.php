@@ -32,8 +32,8 @@ class ClientController extends Controller
         $balance = $imprest - $records;
         
         //View Report
-        $months = Record::select('month')->where('client_id', $client)->distinct()->get();
-        $years = Record::select('year')->where('client_id', $client)->distinct()->get();
+        $months = Record::select('month')->where('client_id', $client)->orderby('month', 'asc')->distinct()->get();
+        $years = Record::select('year')->where('client_id', $client)->orderby('year', 'asc')->distinct()->get();
         // dd($view_report);
 
         return view('client.index', compact('business', 'accounts', 'accountcategory', 'balance', 'months', 'years'));
@@ -146,9 +146,9 @@ class ClientController extends Controller
                 'record_amount' => $record_amount,
                 'record_receipt_no' => $record_receipt_no,
                 'staff_id' => $staff_id,
-                'day' => date('d'),
-                'month' => date('m'),
-                'year' => date('Y')
+                'day' => date('d', strtotime($record_date)),
+                'month' => date('m', strtotime($record_date)),
+                'year' => date('Y', strtotime($record_date))
             ]);
 
             return redirect()->route('dashboard-client')->with('success', 'Imprest Stored'); 
@@ -160,7 +160,36 @@ class ClientController extends Controller
 
     //View Report
     public function viewreport(Request $request){
-        dd('Hit!');
+        $client = Auth::guard('staff')->user()->client_id;
+        $business = Client::where('id', $client)->first();
+        $accounts = Account::where('client_id', $client)->orderby('account_name', 'asc')->get();
+        $accountcategory = Accountcategory::orderby('account_category_name', 'asc')->get();
+        
+        $imprest = Imprest::where('client_id', $client)->sum('imprest_amount');
+        $records = Record::where('client_id', $client)->sum('record_amount');
+        
+        //Getting the balance 
+        $balance = $imprest - $records;
+        
+        //View Report
+        $months = Record::select('month')->where('client_id', $client)->orderby('month', 'asc')->distinct()->get();
+        $years = Record::select('year')->where('client_id', $client)->orderby('year', 'asc')->distinct()->get();
+
+        //Validating Page
+        $data = $request->validate([
+            'month' => ['required'],
+            'year' => ['required'],
+        ]);
+
+        $client = Auth::guard('staff')->user()->client_id;
+        $month = $data['month'];
+        $year = $data['year'];
+
+        $report_columns = Account::where('client_id', $client)->get();
+        $reports = Record::where('month', $month)->where('year', $year)->where('client_id', $client)->get();
+        // dd($report);
+
+        return view('client.view-report', compact('report_columns', 'month', 'year', 'business', 'accounts', 'accountcategory', 'balance', 'months', 'years', 'reports'));
     }
 
     //Logout

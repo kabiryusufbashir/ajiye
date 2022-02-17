@@ -546,6 +546,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: auto;
   margin-bottom: auto;
 }
+.my-24 {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -584,6 +588,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .flex {
   display: flex;
+}
+.table {
+  display: table;
 }
 .grid {
   display: grid;
@@ -651,6 +658,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-4 {
   width: 1rem;
 }
+.table-auto {
+  table-layout: auto;
+}
 .cursor-pointer {
   cursor: pointer;
 }
@@ -671,6 +681,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .flex-row {
   flex-direction: row;
+}
+.flex-col {
+  flex-direction: column;
 }
 .items-center {
   align-items: center;
@@ -713,6 +726,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .border {
   border-width: 1px;
+}
+.border-2 {
+  border-width: 2px;
 }
 .border-b {
   border-bottom-width: 1px;
@@ -814,6 +830,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
 .pt-3 {
   padding-top: 0.75rem;
 }
@@ -822,6 +842,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pt-20 {
   padding-top: 5rem;
+}
+.text-left {
+  text-align: left;
 }
 .text-center {
   text-align: center;
