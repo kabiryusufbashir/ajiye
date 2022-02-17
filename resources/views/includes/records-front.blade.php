@@ -27,7 +27,14 @@
                         @enderror
                     </div>
                     <div>
-                        <label for="record_receipt_no" class="text-lg font-medium">Receipt No</label><br>
+                        <label for="details" class="text-lg font-medium">Details</label><br>
+                        <input required type="text" name="details" value="{{old('details')}}" placeholder="Details" class="input-field">
+                        @error('details')
+                            {{$message}}
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="record_receipt_no" class="text-lg font-medium">Voucher No</label><br>
                         <input required type="text" name="record_receipt_no" value="{{old('record_receipt_no')}}" placeholder="Receipt No" class="input-field">
                         @error('record_receipt_no')
                             {{$message}}

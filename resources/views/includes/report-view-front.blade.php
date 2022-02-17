@@ -19,19 +19,25 @@
         </div>
         <div class="my-2">
             <table class="w-full">
+                <!-- Main Columns  -->
                 <tr class="text-left">
                     <th>No</th>
                     <th>Date</th>
+                    <th>Details</th>
+                    <th>Total</th>
                     @foreach($report_columns as $column)
                         <th class="">
                             {{ $column->account_name }}
                         </th>
                     @endforeach
                 </tr>
+                <!-- Datas  -->
                 @foreach($reports as $report)
                     <tr class="text-left">
                         <td>{{ $loop->index + 1 }}</td>
                         <td>{{ date('d/m/Y', strtotime($report->created_at)) }}</td>
+                        <td>{{ date('d/m/Y', strtotime($report->created_at)) }}</td>
+                        <td>{{ $report->record_amount }}</td>
                         @foreach($report_columns as $column)
                             <td>
                                 @if($column->id == $report->account_id)

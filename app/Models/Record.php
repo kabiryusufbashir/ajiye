@@ -19,6 +19,7 @@ class Record extends Model
         'staff_id',
         'day',
         'month',
-        'year'
+        'year',
+        'details'
     ];
 }

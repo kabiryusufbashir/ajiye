@@ -124,6 +124,7 @@ class ClientController extends Controller
         $data = $request->validate([
             'account_id' => ['required'],
             'accountcategory_id' => [''],
+            'details' => [''],
             'record_date' => ['required'],
             'record_amount' => ['required'],
             'record_receipt_no' => ['required'],
@@ -134,6 +135,7 @@ class ClientController extends Controller
         $accountcategory_id = $data['accountcategory_id'];
         $record_amount = $data['record_amount'];
         $record_receipt_no = $data['record_receipt_no'];
+        $details = $data['details'];
         $staff_id = Auth::guard('staff')->user()->id;
         $client_id = Auth::guard('staff')->user()->client_id;
         
@@ -145,6 +147,7 @@ class ClientController extends Controller
                 'record_date' => $record_date,
                 'record_amount' => $record_amount,
                 'record_receipt_no' => $record_receipt_no,
+                'details' => $details,
                 'staff_id' => $staff_id,
                 'day' => date('d', strtotime($record_date)),
                 'month' => date('m', strtotime($record_date)),
