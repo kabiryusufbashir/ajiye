@@ -24,9 +24,13 @@ class ClientController extends Controller
         $business = Client::where('id', $client)->first();
         $accounts = Account::where('client_id', $client)->orderby('account_name', 'asc')->get();
         $accountcategory = Accountcategory::orderby('account_category_name', 'asc')->get();
+
         
-        $imprest = Imprest::where('client_id', $client)->sum('imprest_amount');
-        $records = Record::where('client_id', $client)->sum('record_amount');
+        //Getting Imprest ID
+        $imprest_id = Account::select('id')->where('account_name', 'imprest')->first();
+        
+        $imprest = Record::where('account_id', $imprest_id->id)->where('client_id', $client)->sum('record_amount');
+        $records = Record::where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->sum('record_amount');
         
         //Getting the balance 
         $balance = $imprest - $records;
@@ -128,11 +132,11 @@ class ClientController extends Controller
     public function addrecord(Request $request){
         $data = $request->validate([
             'account_id' => ['required'],
-            'accountcategory_id' => [''],
-            'details' => [''],
             'record_date' => ['required'],
             'record_amount' => ['required'],
-            'record_receipt_no' => ['required'],
+            'accountcategory_id' => [''],
+            'details' => [''],
+            'record_receipt_no' => [''],
         ]);
 
         $record_date = $data['record_date'];

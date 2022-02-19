@@ -22,10 +22,10 @@
             <i class="fas fa-book"></i><br>
             Accounts
         </div>
-        <div class="menu-bar">
+        <!-- <div class="menu-bar">
             <i class="fas fa-file-invoice"></i><br>
             New Imprest
-        </div>
+        </div> -->
         <div class="menu-bar">
             <i class="fas fa-file-invoice"></i><br>
             New Record

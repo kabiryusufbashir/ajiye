@@ -88,11 +88,11 @@
                     <!-- Total  -->
                     <tr class="text-left">
                         <th></th>
-                        <th>{{ $received->sum('record_amount') }}</th>
+                        <th>{{ $received->sum('record_amount') + $balance_month_bd }}</th>
                         <th></th>
                         <th>Total</th>
                         <th>
-                            {{ $reports->sum('record_amount') }}
+                            {{ ($received->sum('record_amount') + $balance_month_bd ) - ($reports->sum('record_amount')) }}
                         </th>
                         @foreach($report_columns as $column)
                             <th>
@@ -103,11 +103,11 @@
                     <!-- Balance C/D  -->
                     <tr class="text-left">
                         <th></th>
-                        <th>{{ $balance_month }}</th>
+                        <th>{{ ($received->sum('record_amount') + $balance_month_bd ) - ($reports->sum('record_amount')) }}</th>
                         <th></th>
                         <th>Balance c/d</th>
                         <th>
-                            {{ $balance_month }}
+                            {{ ($received->sum('record_amount') + $balance_month_bd ) - ($reports->sum('record_amount')) }}
                         </th>
                         @foreach($report_columns as $column)
                             <th></th>

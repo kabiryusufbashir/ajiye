@@ -1,7 +1,7 @@
 <template>
     <div class="grid grid-cols-2 gap-4 my-2">
         <div>
-            <label for="account_id" class="text-lg font-medium">Account</label><br>
+            <label for="account_id" class="text-lg font-medium">Account *</label><br>
             <select v-model="account" @change="getSubaccount()" required name="account_id" value="{{old('account_id')}}" placeholder="Account" class="input-field">
                 <option value="0">--Select Account--</option>
                 <option class="py-2" v-for="data in accounts" :value="data.id" :key="data.id">{{ data.account_name }}</option>

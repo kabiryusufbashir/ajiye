@@ -77,21 +77,21 @@ let closeModalRecord = document.querySelector('#closeModalRecord')
     })
 
 //Imprest Module
-let imprestNav = document.querySelector('#imprestNav')
-let imprest = document.querySelector('#imprest')
-let addImprestForm = document.querySelector('#addImprestForm')
-let closeModalImprest = document.querySelector('#closeModalImprest')
+// let imprestNav = document.querySelector('#imprestNav')
+// let imprest = document.querySelector('#imprest')
+// let addImprestForm = document.querySelector('#addImprestForm')
+// let closeModalImprest = document.querySelector('#closeModalImprest')
 
-    // Record Navigation 
-    imprestNav.addEventListener('click', ()=>{
-        imprest.classList.remove('hidden')
-        addImprestForm.classList.remove('hidden')
-    })
+//     // Record Navigation 
+//     imprestNav.addEventListener('click', ()=>{
+//         imprest.classList.remove('hidden')
+//         addImprestForm.classList.remove('hidden')
+//     })
 
-    // Close Modal 
-    closeModalImprest.addEventListener('click', ()=>{
-        imprest.classList.add('hidden')
-    })
+//     // Close Modal 
+//     closeModalImprest.addEventListener('click', ()=>{
+//         imprest.classList.add('hidden')
+//     })
 
 // View Report 
 let viewReportNav = document.querySelector('#viewReportNav')

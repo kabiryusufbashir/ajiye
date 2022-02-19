@@ -66,5 +66,5 @@ table tbody{
 table, th, td{
     border: 1px solid #96D4D4;
     padding: 0.5%;
-    /* border-collapse: collapse; */
+    border-collapse: collapse;
 }
