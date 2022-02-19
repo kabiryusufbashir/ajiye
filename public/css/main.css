@@ -51,8 +51,20 @@
     background: #FFFFFF;
 }
 
+table{
+    display: block;
+    overflow-x: visible;
+    white-space: nowrap;
+    min-width: 1200px;
+}
+
+table tbody{
+    display: table;
+    width: 100%;
+}
+
 table, th, td{
     border: 1px solid #96D4D4;
     padding: 0.5%;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
 }

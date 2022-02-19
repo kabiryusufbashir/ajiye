@@ -198,15 +198,32 @@ class ClientController extends Controller
         $year = $data['year'];
 
         //Reports data
-        $report_columns = Account::where('client_id', $client)->get();
-        $reports = Record::where('month', $month)->where('year', $year)->where('client_id', $client)->orderby('day', 'asc')->get();
+        $report_columns = Account::where('client_id', $client)->where('id', '!=', $imprest_id->id)->get();
+        $received = Record::where('month', $month)->where('year', $year)->where('client_id', $client)->where('account_id', $imprest_id->id)->orderby('day', 'asc')->get();
+        $reports = Record::where('month', $month)->where('year', $year)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->orderby('day', 'asc')->get();
 
-        //Balance for the month
+        //Balance B/D
+        $month_bd = $month - 1;
+        $imprest_month_bd = Record::where('account_id', $imprest_id->id)->where('month', $month_bd)->where('year', $year)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount');
+        $expenditure_bd = Record::where('account_id', '!=', $imprest_id->id)->where('month', $month_bd)->where('year', $year)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount');
+        $balance_month_bd = $imprest_month_bd - $expenditure_bd;
+        
+        //Balance C/D
         $imprest_month = Record::where('account_id', $imprest_id->id)->where('month', $month)->where('year', $year)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount');
         $expenditure = Record::where('account_id', '!=', $imprest_id->id)->where('month', $month)->where('year', $year)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount');
         $balance_month = $imprest_month - $expenditure;
 
-        return view('client.view-report', compact('report_columns', 'month', 'year', 'business', 'accounts', 'accountcategory', 'balance', 'months', 'years', 'reports', 'imprest_id', 'balance_month'));
+        // dd($balance_month_bd);
+
+        return view('client.view-report', compact(
+            'report_columns', 'month', 
+            'year', 'business', 
+            'accounts', 'accountcategory', 
+            'balance', 'months', 'years', 
+            'reports', 'imprest_id', 
+            'balance_month', 'received',
+            'balance_month_bd'
+        ));
     }
 
     //Logout

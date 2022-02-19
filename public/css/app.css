@@ -658,6 +658,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-4 {
   width: 1rem;
 }
+.w-24 {
+  width: 6rem;
+}
 .table-auto {
   table-layout: auto;
 }
@@ -702,6 +705,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .gap-6 {
   gap: 1.5rem;
+}
+.overflow-x-auto {
+  overflow-x: auto;
+}
+.overflow-x-scroll {
+  overflow-x: scroll;
 }
 .rounded {
   border-radius: 0.25rem;
