@@ -173,8 +173,12 @@ class ClientController extends Controller
         $accounts = Account::where('client_id', $client)->orderby('account_name', 'asc')->get();
         $accountcategory = Accountcategory::orderby('account_category_name', 'asc')->get();
         
-        $imprest = Imprest::where('client_id', $client)->sum('imprest_amount');
-        $records = Record::where('client_id', $client)->sum('record_amount');
+        
+        //Getting Imprest ID
+        $imprest_id = Account::select('id')->where('account_name', 'imprest')->first();
+
+        $imprest = Record::where('account_id', $imprest_id->id)->where('client_id', $client)->sum('record_amount');
+        $records = Record::where('account_id', '!=', $imprest_id->id)->where('client_id', $client)->sum('record_amount');
         
         //Getting the balance 
         $balance = $imprest - $records;
@@ -193,11 +197,16 @@ class ClientController extends Controller
         $month = $data['month'];
         $year = $data['year'];
 
+        //Reports data
         $report_columns = Account::where('client_id', $client)->get();
         $reports = Record::where('month', $month)->where('year', $year)->where('client_id', $client)->orderby('day', 'asc')->get();
-        // dd($report);
 
-        return view('client.view-report', compact('report_columns', 'month', 'year', 'business', 'accounts', 'accountcategory', 'balance', 'months', 'years', 'reports'));
+        //Balance for the month
+        $imprest_month = Record::where('account_id', $imprest_id->id)->where('month', $month)->where('year', $year)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount');
+        $expenditure = Record::where('account_id', '!=', $imprest_id->id)->where('month', $month)->where('year', $year)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount');
+        $balance_month = $imprest_month - $expenditure;
+
+        return view('client.view-report', compact('report_columns', 'month', 'year', 'business', 'accounts', 'accountcategory', 'balance', 'months', 'years', 'reports', 'imprest_id', 'balance_month'));
     }
 
     //Logout

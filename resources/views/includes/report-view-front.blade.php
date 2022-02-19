@@ -37,7 +37,11 @@
                         <td>{{ $loop->index + 1 }}</td>
                         <td>{{ $report->day }}</td>
                         <td>{{ !empty($report->details) ? $report->details : 'Nill'}}</td>
-                        <td>{{ $report->record_amount }}</td>
+                        <td>
+                            @if($report->account_id != $imprest_id->id)
+                                {{ $report->record_amount }}
+                            @endif    
+                        </td>
                         @foreach($report_columns as $column)
                             <td>
                                 @if($column->id == $report->account_id)
@@ -51,8 +55,10 @@
                 <tr class="text-left">
                     <th></th>
                     <th></th>
-                    <th></th>
-                    <th>{{ $reports->sum('record_amount') }}</th>
+                    <th>Balance c/d</th>
+                    <th>
+                        {{ $balance_month }}
+                    </th>
                     @foreach($report_columns as $column)
                         <th>
                             {{ \App\Models\Record::where('account_id', $column->id)->where('month', $month)->where('year', $year)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount') }}
