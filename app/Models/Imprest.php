@@ -11,7 +11,10 @@ class Imprest extends Model
 
     protected $fillable = [
         'client_id',
-        'imprest_amount'
+        'imprest_amount',
+        'day',
+        'month',
+        'year'
     ];
 
     public function client(){

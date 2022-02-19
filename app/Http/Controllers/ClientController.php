@@ -101,15 +101,20 @@ class ClientController extends Controller
     public function addimprest(Request $request){
         $data = $request->validate([
             'imprest_amount' => ['required'],
+            'date' => ['required'],
         ]);
 
         $client = Auth::guard('staff')->user()->client_id;
         $imprest_amount = $data['imprest_amount'];
+        $date = $data['date'];
 
         try{
             Imprest::create([
                 'client_id' => $client,
                 'imprest_amount' => $data['imprest_amount'],
+                'day' => date('d', strtotime($date)),
+                'month' => date('m', strtotime($date)),
+                'year' => date('Y', strtotime($date))
             ]);
 
             return redirect()->route('dashboard-client')->with('success', $imprest_amount.' Added'); 
