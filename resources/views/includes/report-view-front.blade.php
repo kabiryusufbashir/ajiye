@@ -92,7 +92,7 @@
                         <th></th>
                         <th>Total</th>
                         <th>
-                            {{ ($received->sum('record_amount') + $balance_month_bd ) - ($reports->sum('record_amount')) }}
+                            {{ ($reports->sum('record_amount')) }}
                         </th>
                         @foreach($report_columns as $column)
                             <th>

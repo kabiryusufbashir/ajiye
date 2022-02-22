@@ -53,3 +53,5 @@ Route::post('/logout-client', [ClientController::class, 'logout'])->name('logout
     // API 
     Route::get('/api/getAccount', [APIController::class, 'getAccount']);
     Route::get('/api/getSubaccount', [APIController::class, 'getSubaccount']);
+    Route::get('/api/getMonth', [APIController::class, 'getmonth']);
+    Route::get('/api/getYear', [APIController::class, 'getYear']);
