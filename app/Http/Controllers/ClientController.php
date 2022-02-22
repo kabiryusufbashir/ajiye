@@ -215,11 +215,12 @@ class ClientController extends Controller
         //Balance B/D
         if($month == 01){
             $month_bd = 12;
-            $count_month_bd = Record::where('month', '<=', $month_bd)->where('year', $year)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->orderby('month', 'desc')->get();
-            
+            $year_month_bd = $year - 1;
+            $count_month_bd = Record::where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->orderby('month', 'desc')->get();
             if(count($count_month_bd) > 0){
-                $month_bd = Record::where('month', '<=', $month_bd)->where('year', $year)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->orderby('month', 'desc')->limit(1)->first();
+                $month_bd = Record::where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->orderby('month', 'asc')->limit(1)->first();
                 $month_bd = $month_bd->month;
+                dd($month_bd);
             }else{
                 $month_bd = '';
             }
@@ -233,11 +234,18 @@ class ClientController extends Controller
         }else{
             $year_bd = $year;
         }
+
+        //Received
+        $received_bd = Record::where('month', '<=', $month_bd)->where('year', '<=', $year_bd)->where('client_id', $client)->where('account_id', $imprest_id->id)->sum('record_amount');
     
-        $imprest_month_bd = Record::where('account_id', $imprest_id->id)->where('month', '<', $month_bd)->where('year', $year_bd)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount');
-        $expenditure_bd = Record::where('account_id', '!=', $imprest_id->id)->where('month', '<', $month_bd)->where('year', $year_bd)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount');
+        //Expenditure
+        $expenditure_bd = Record::where('account_id', '!=', $imprest_id->id)->where('month', '<=', $month_bd)->where('year', '<=', $year_bd)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount');
         
-        $balance_month_bd = $imprest_month_bd - $expenditure_bd;
+        if($received_bd != 0){
+            $balance_month_bd = $received_bd - $expenditure_bd;
+        }else{
+            $balance_month_bd = 0;
+        }
         
         return view('client.view-report', compact(
             'report_columns', 'month', 
