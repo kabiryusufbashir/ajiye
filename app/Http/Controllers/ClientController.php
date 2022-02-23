@@ -241,7 +241,10 @@ class ClientController extends Controller
                 }
             }
                
-        dd($month_timestamp);
+        //Calculating the imprest and total expenditure
+        $received_last_month = Record::where('timestamp', '<=', $month_timestamp)->where('client_id', $client)->where('account_id', $imprest_id->id)->sum('record_amount');
+        $expenditure_last_month = Record::where('timestamp', '<=', $month_timestamp)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->sum('record_amount');
+        $balance_month_bd = $received_last_month - $expenditure_last_month;
         
         return view('client.view-report', compact(
             'report_columns', 'month', 
