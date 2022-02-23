@@ -40,7 +40,6 @@ class ClientController extends Controller
         //View Report
         $months = Record::select('month')->where('client_id', $client)->orderby('month', 'asc')->distinct()->get();
         $years = Record::select('year')->where('client_id', $client)->orderby('year', 'asc')->distinct()->get();
-        // dd($view_report);
 
         return view('client.index', compact('business', 'accounts', 'accountcategory', 'balance', 'months', 'years', 'imprest', 'records', 'staff'));
     }
@@ -181,7 +180,6 @@ class ClientController extends Controller
         $accounts = Account::where('client_id', $client)->orderby('account_name', 'asc')->get();
         $accountcategory = Accountcategory::orderby('account_category_name', 'asc')->get();
         
-        
         //Getting Imprest ID
         $imprest_id = Account::select('id')->where('account_name', 'imprest')->first();
 
@@ -221,9 +219,9 @@ class ClientController extends Controller
             if($month == 01){
                 $month_bd = 12;
                 $year_month_bd = $year - 1;
-                $count_month_bd = Record::where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->orderby('id', 'desc')->get();
+                $count_month_bd = Record::where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->orderby('timestamp', 'desc')->get();
                     if(count($count_month_bd) > 0){
-                        $getting_month_bd = Record::select('month', 'timestamp')->where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->orderby('id', 'asc')->limit(1)->first();
+                        $getting_month_bd = Record::select('month', 'timestamp')->where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->orderby('timestamp', 'asc')->limit(1)->first();
                         $month_bd = $getting_month_bd->month;
                         $month_timestamp = $getting_month_bd->timestamp;
                     }else{
@@ -232,9 +230,9 @@ class ClientController extends Controller
                     }
             }else{
                 //if previous month is not 12
-                $count_month_bd = Record::where('month', '<', $month)->where('year', $year)->where('client_id', $client)->orderby('id', 'desc')->get();
+                $count_month_bd = Record::where('month', '<', $month)->where('year', $year)->where('client_id', $client)->orderby('timestamp', 'desc')->get();
                 if(count($count_month_bd) > 0){
-                    $getting_month_bd = Record::select('month', 'timestamp')->where('month', '<', $month)->where('year', $year)->where('client_id', $client)->orderby('id', 'desc')->limit(1)->first();
+                    $getting_month_bd = Record::select('month', 'timestamp')->where('month', '<', $month)->where('year', $year)->where('client_id', $client)->orderby('timestamp', 'desc')->limit(1)->first();
                     $month_bd = $getting_month_bd->month;
                     $month_timestamp = $getting_month_bd->timestamp;
                 }else{
@@ -247,6 +245,8 @@ class ClientController extends Controller
         $received_last_month = Record::where('timestamp', '<=', $month_timestamp)->where('client_id', $client)->where('account_id', $imprest_id->id)->sum('record_amount');
         $expenditure_last_month = Record::where('timestamp', '<=', $month_timestamp)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->sum('record_amount');
         $balance_month_bd = $received_last_month - $expenditure_last_month;
+        
+        // dd($month_timestamp);
 
         return view('client.view-report', compact(
             'report_columns', 'month', 
