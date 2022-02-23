@@ -19,24 +19,24 @@
             Home
         </div>
         <div class="menu-bar">
-            <i class="fas fa-book"></i><br>
-            Accounts
-        </div>
-        <!-- <div class="menu-bar">
             <i class="fas fa-file-invoice"></i><br>
-            New Imprest
-        </div> -->
-        <div class="menu-bar">
-            <i class="fas fa-file-invoice"></i><br>
-            New Record
+            Total Imprest <br>
+            {{ $imprest }}
         </div>
         <div class="menu-bar">
             <i class="fas fa-cash-register"></i><br>
-            View Report
+            Total Expenditure <br>
+            {{ $records }}
+        </div>
+        <div class="menu-bar">
+            <i class="fas fa-cash-register"></i><br>
+            Balance <br>
+            {{ $balance }}
         </div>
         <div class="menu-bar">
             <i class="fas fa-user-circle"></i><br>
-            Staff
+            No of Staff <br>
+            {{ count($staff) }}
         </div>
         <div class="menu-bar">
             <i class="fas fa-sign-out-alt"></i><br>

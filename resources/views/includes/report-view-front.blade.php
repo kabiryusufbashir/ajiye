@@ -24,59 +24,57 @@
                         <!-- Main Columns  -->
                         <tr class="text-left">
                             <th>No</th>
-                            <th>Received</th>
                             <th>Date</th>
                             <th>Details</th>
-                            <th>Total</th>
+                            <th>Received</th>
                             @foreach($report_columns as $column)
                                 <th class="">
                                     {{ $column->account_name }}
                                 </th>
                             @endforeach
+                            <th></th>
+                            <th></th>
                         </tr>
                         <!-- Balance B/D  -->
                         <tr class="text-left">
                             <td>1</td>
-                            <td>{{ $balance_month_bd }}</td>
                             <td>01</td>
                             <th>Balance b/d</th>
-                            <td></td>
+                            <td>{{ $balance_month_bd }}</td>
                             @foreach($report_columns as $column)
                                 <td></td>
                             @endforeach
+                            <td></td>
+                            <td></td>
                         </tr>
                         <!-- Received  -->
                         @foreach($received as $refill)
                             <tr class="text-left">
                                 <td>{{ $loop->index + 2 }}</td>
                                 <td class="">
-                                    {{ $refill->record_amount }}
-                                </td>
-                                <td class="">
                                     {{ $refill->day }}
                                 </td>
                                 <td class="">
                                     {{ $refill->details }}
+                                </td>
+                                <td class="">
+                                    {{ $refill->record_amount }}
                                 </td>
                                 <td>
                                     @foreach($report_columns as $column)
                                         <td></td>
                                     @endforeach
                                 </td>
+                                <td></td>
                             </tr>
                         @endforeach
                         <!-- Datas  -->
                         @foreach($reports as $report)
                             <tr class="text-left">
                                 <td>{{ count($received) + $loop->index + 1 + 1 }}</td>
-                                <td></td>
                                 <td>{{ $report->day }}</td>
                                 <td>{{ !empty($report->details) ? $report->details : ''}}</td>
-                                <td>
-                                    @if($report->account_id != $imprest_id->id)
-                                        {{ $report->record_amount }}
-                                    @endif    
-                                </td>
+                                <td></td>
                                 @foreach($report_columns as $column)
                                     <td>
                                         @if($column->id == $report->account_id)
@@ -84,35 +82,61 @@
                                         @endif
                                     </td>
                                 @endforeach
+                                <td></td>
+                                <td></td>
                             </tr>
                         @endforeach
                         <!-- Total  -->
                         <tr class="text-left">
                             <th></th>
-                            <th>{{ $received->sum('record_amount') + $balance_month_bd }}</th>
                             <th></th>
                             <th>Total</th>
-                            <th>
-                                {{ ($reports->sum('record_amount')) }}
-                            </th>
+                            <th>{{ $balance_month_bd + $received->sum('record_amount') }}</th>
                             @foreach($report_columns as $column)
                                 <th>
                                     {{ \App\Models\Record::where('account_id', $column->id)->where('month', $month)->where('year', $year)->where('client_id', Auth::guard('staff')->user()->client_id)->sum('record_amount') }}
                                 </th>
                             @endforeach
+                            <th>
+                                {{ ($reports->sum('record_amount')) }}
+                            </th>
+                            <th></th>
+                        </tr>
+                        <!-- B/D - C/D  -->
+                        <tr class="text-left">
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            @foreach($report_columns as $column)
+                                <th></th>
+                            @endforeach
+                            <th>{{ ($received->sum('record_amount') + $balance_month_bd ) }}</th>
+                            <th></th>
+                        </tr>
+                        <!-- B/D - C/D  -->
+                        <tr class="text-left">
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            @foreach($report_columns as $column)
+                                <th></th>
+                            @endforeach
+                            <th>{{ ($reports->sum('record_amount')) }}</th>
+                            <th></th>
                         </tr>
                         <!-- Balance C/D  -->
                         <tr class="text-left">
                             <th></th>
-                            <th>{{ ($received->sum('record_amount') + $balance_month_bd ) - ($reports->sum('record_amount')) }}</th>
                             <th></th>
-                            <th>Balance c/d</th>
-                            <th>
-                                {{ ($received->sum('record_amount') + $balance_month_bd ) - ($reports->sum('record_amount')) }}
-                            </th>
+                            <th></th>
+                            <th></th>
                             @foreach($report_columns as $column)
                                 <th></th>
                             @endforeach
+                            <th>Balance c/d</th>
+                            <th>{{ ($received->sum('record_amount') + $balance_month_bd ) - ($reports->sum('record_amount')) }}</th>
                         </tr>
                     </tbody>
                 </table>

@@ -10,6 +10,7 @@ use App\Models\Account;
 use App\Models\Accountcategory;
 use App\Models\Record;
 use App\Models\Imprest;
+use App\Models\Staff;
 use DB;
 
 class ClientController extends Controller
@@ -29,6 +30,7 @@ class ClientController extends Controller
         //Getting Imprest ID
         $imprest_id = Account::select('id')->where('account_name', 'imprest')->first();
         
+        $staff = Staff::where('client_id', $client)->get();
         $imprest = Record::where('account_id', $imprest_id->id)->where('client_id', $client)->sum('record_amount');
         $records = Record::where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->sum('record_amount');
         
@@ -40,7 +42,7 @@ class ClientController extends Controller
         $years = Record::select('year')->where('client_id', $client)->orderby('year', 'asc')->distinct()->get();
         // dd($view_report);
 
-        return view('client.index', compact('business', 'accounts', 'accountcategory', 'balance', 'months', 'years'));
+        return view('client.index', compact('business', 'accounts', 'accountcategory', 'balance', 'months', 'years', 'imprest', 'records', 'staff'));
     }
 
     //Account
@@ -228,7 +230,6 @@ class ClientController extends Controller
                         $month_bd = '';
                         $month_timestamp = '';
                     }
-                // dd($month_timestamp);
             }else{
                 //if previous month is not 12
                 $count_month_bd = Record::where('month', '<', $month)->where('year', $year)->where('client_id', $client)->orderby('id', 'desc')->get();
