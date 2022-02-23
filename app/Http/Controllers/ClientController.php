@@ -219,20 +219,21 @@ class ClientController extends Controller
             if($month == 01){
                 $month_bd = 12;
                 $year_month_bd = $year - 1;
-                $count_month_bd = Record::where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->orderby('month', 'desc')->get();
+                $count_month_bd = Record::where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->orderby('month', 'desc')->get();
                     if(count($count_month_bd) > 0){
-                        $getting_month_bd = Record::select('month', 'timestamp')->where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->orderby('month', 'asc')->limit(1)->first();
+                        $getting_month_bd = Record::select('month', 'timestamp')->where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->orderby('month', 'asc')->limit(1)->first();
                         $month_bd = $getting_month_bd->month;
                         $month_timestamp = $getting_month_bd->timestamp;
                     }else{
                         $month_bd = '';
                         $month_timestamp = '';
                     }
+                // dd($month_timestamp);
             }else{
                 //if previous month is not 12
-                $count_month_bd = Record::where('month', '<', $month)->where('year', $year)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->orderby('month', 'desc')->get();
+                $count_month_bd = Record::where('month', '<', $month)->where('year', $year)->where('client_id', $client)->orderby('month', 'desc')->get();
                 if(count($count_month_bd) > 0){
-                    $getting_month_bd = Record::select('month', 'timestamp')->where('month', '<', $month)->where('year', $year)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->orderby('month', 'desc')->limit(1)->first();
+                    $getting_month_bd = Record::select('month', 'timestamp')->where('month', '<', $month)->where('year', $year)->where('client_id', $client)->orderby('month', 'desc')->limit(1)->first();
                     $month_bd = $getting_month_bd->month;
                     $month_timestamp = $getting_month_bd->timestamp;
                 }else{
