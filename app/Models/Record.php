@@ -20,6 +20,7 @@ class Record extends Model
         'day',
         'month',
         'year',
-        'details'
+        'details',
+        'timestamp'
     ];
 }
