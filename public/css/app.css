@@ -835,6 +835,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-center {
   text-align: center;
 }
+.text-right {
+  text-align: right;
+}
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;

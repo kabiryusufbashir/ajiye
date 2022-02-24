@@ -221,7 +221,7 @@ class ClientController extends Controller
                 $year_month_bd = $year - 1;
                 $count_month_bd = Record::where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->orderby('timestamp', 'desc')->get();
                     if(count($count_month_bd) > 0){
-                        $getting_month_bd = Record::select('month', 'timestamp')->where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->orderby('timestamp', 'asc')->limit(1)->first();
+                        $getting_month_bd = Record::select('month', 'timestamp')->where('month', '<=', $month_bd)->where('year', $year_month_bd)->where('client_id', $client)->orderby('timestamp', 'desc')->limit(1)->first();
                         $month_bd = $getting_month_bd->month;
                         $month_timestamp = $getting_month_bd->timestamp;
                     }else{
