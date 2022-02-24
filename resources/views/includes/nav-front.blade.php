@@ -1,4 +1,4 @@
-<div id="nav" class="bg-gray-900 text-center py-12 h-screen text-white">
+<div id="nav" class="bg-green-800 text-center py-12 h-screen text-white">
     <div id="homeNav" class="nav-front-menu">
         <a href="{{ route('dashboard-client') }}">
             <i class="fas fa-home"></i><br>

@@ -1,6 +1,6 @@
 <div id="records" class="hidden">
     <div id="records-content">
-        <div id="records-header" class="bg-gray-900 text-white p-4 flex justify-between">
+        <div id="records-header" class="bg-green-800 text-white p-4 flex justify-between">
             <span>New Record</span>
             <span id="closeModalRecord" class="cursor-pointer">X</span>
         </div>

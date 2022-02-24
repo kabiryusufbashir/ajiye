@@ -1,6 +1,6 @@
 <div id="viewReport" class="hidden">
     <div id="imprest-content">
-        <div id="imprest-header" class="bg-gray-900 text-white p-4 flex justify-between">
+        <div id="imprest-header" class="bg-green-800 text-white p-4 flex justify-between">
             <span>View Report</span>
             <span id="closeModalReport" class="cursor-pointer">X</span>
         </div>

@@ -1,6 +1,6 @@
 <div id="accounts" class="hidden">
     <div id="accounts-content">
-        <div id="accounts-header" class="bg-gray-900 text-white p-4 flex justify-between">
+        <div id="accounts-header" class="bg-green-800 text-white p-4 flex justify-between">
             <span>Accounts</span>
             <span id="closeModalAccount" class="cursor-pointer">X</span>
         </div>
