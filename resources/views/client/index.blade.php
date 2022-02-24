@@ -8,24 +8,24 @@
     <title>{{ $business->client_business_name }}</title>
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 </head>
 <body>
-    <div id="container">
-        <!-- Nav  -->
-        @include('includes.nav-front')
-        <!-- Menu  -->
-        @include('includes.menu-front')
-        <!-- Accounts  -->
-        @include('includes.accounts-front')
-        <div id="app">
-            <!-- Record  -->
-            @include('includes.records-front')
-            <!-- Imprest  -->
-            @include('includes.imprest-front')
-            <!-- View Report  -->
-            @include('includes.report-front')
-        </div>
+    <!-- Nav  -->
+    @include('includes.nav-front')
+    <!-- Menu  -->
+    @include('includes.menu-front')
+    <!-- Accounts  -->
+    @include('includes.accounts-front')
+    <div id="app">
+        <!-- Record  -->
+        @include('includes.records-front')
+        <!-- Imprest  -->
+        @include('includes.imprest-front')
+        <!-- View Report  -->
+        @include('includes.report-front')
     </div>
+    {!! $chart->script() !!}
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ mix('/js/app.js') }}"></script>  
 </body>

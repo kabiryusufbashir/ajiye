@@ -26,6 +26,10 @@
         Staff
     </div>
     <div class="nav-front-menu">
+        <i class="fas fa-user-circle"></i><br>
+        Profile
+    </div>
+    <div class="nav-front-menu">
         <form action="{{ route('logout-client') }}" method="POST">
             @csrf
             <button type="submit">

@@ -13,6 +13,8 @@ use App\Models\Imprest;
 use App\Models\Staff;
 use DB;
 
+use App\Charts\ClientStatisticChart;
+
 class ClientController extends Controller
 {
 
@@ -26,6 +28,13 @@ class ClientController extends Controller
         $accounts = Account::where('client_id', $client)->orderby('account_name', 'asc')->get();
         $accountcategory = Accountcategory::orderby('account_category_name', 'asc')->get();
 
+        //Chart
+        
+        $data = Account::select('account_name', 'id')->where('client_id', $client)->where('account_name', '!=', 'Imprest')->orderby('account_name', 'asc')->get();
+
+        $chart = new ClientStatisticChart;
+        $chart->labels($data->pluck('account_name'));
+        $chart->dataset('Expenditure Statistics', 'bar', $data->values())->options(['backgroundColor' => '#3CB371']);
         
         //Getting Imprest ID
         $imprest_id = Account::select('id')->where('account_name', 'imprest')->first();
@@ -41,7 +50,7 @@ class ClientController extends Controller
         $months = Record::select('month')->where('client_id', $client)->orderby('month', 'asc')->distinct()->get();
         $years = Record::select('year')->where('client_id', $client)->orderby('year', 'asc')->distinct()->get();
 
-        return view('client.index', compact('business', 'accounts', 'accountcategory', 'balance', 'months', 'years', 'imprest', 'records', 'staff'));
+        return view('client.index', compact('chart', 'business', 'accounts', 'accountcategory', 'balance', 'months', 'years', 'imprest', 'records', 'staff'));
     }
 
     //Account
