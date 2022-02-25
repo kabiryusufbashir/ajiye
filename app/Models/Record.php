@@ -23,4 +23,8 @@ class Record extends Model
         'details',
         'timestamp'
     ];
+
+    public function account(){
+        return $this->belongsTo(Account::class, 'foreign_key', 'owner_key');
+    }
 }

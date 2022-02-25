@@ -28,16 +28,17 @@ class ClientController extends Controller
         $accounts = Account::where('client_id', $client)->orderby('account_name', 'asc')->get();
         $accountcategory = Accountcategory::orderby('account_category_name', 'asc')->get();
 
-        //Chart
-        
-        $data = Account::select('account_name', 'id')->where('client_id', $client)->where('account_name', '!=', 'Imprest')->orderby('account_name', 'asc')->get();
-
-        $chart = new ClientStatisticChart;
-        $chart->labels($data->pluck('account_name'));
-        $chart->dataset('Expenditure Statistics', 'bar', $data->values())->options(['backgroundColor' => '#3CB371']);
-        
         //Getting Imprest ID
         $imprest_id = Account::select('id')->where('account_name', 'imprest')->first();
+
+        //Chart
+        $label = Account::select('account_name', 'id')->where('client_id', $client)->where('account_name', '!=', 'Imprest')->orderby('id', 'asc')->get();
+        $dataset = Record::select(DB::raw("SUM(record_amount) as total"))->groupBy('account_id')->orderby('account_id', 'asc')->get();
+
+        $chart = new ClientStatisticChart;
+        $chart->labels($label->pluck('account_name'));
+        $chart->dataset('Expenditure Statistics', 'bar', $dataset->pluck('total'))->options(['backgroundColor' => '#3CB371']);
+        
         
         $staff = Staff::where('client_id', $client)->get();
         $imprest = Record::where('account_id', $imprest_id->id)->where('client_id', $client)->sum('record_amount');

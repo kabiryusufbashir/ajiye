@@ -14,6 +14,10 @@ class Account extends Model
         'account_name',
     ];
 
+    public function record(){
+        return $this->hasMany(Record::class);
+    }
+
     public function accountcategory(){
         return $this->hasMany(Accountcategory::class);
     }
