@@ -30,12 +30,13 @@ class ClientController extends Controller
         $accountcategory = Accountcategory::orderby('account_category_name', 'asc')->get();
 
         //Getting Imprest ID
-        $imprest_id = Account::select('id')->where('account_name', 'imprest')->first();
+        $imprest_id = Account::select('id')->where('client_id', $client)->where('account_name', 'imprest')->first();
 
         //Chart
         $dataset = DB::table('records')
             ->join('accounts', 'records.account_id', '=', 'accounts.id')
             ->where('accounts.id', '!=', $imprest_id->id)
+            ->where('accounts.client_id', '=', $client)
             ->select('accounts.account_name', \DB::raw("SUM(record_amount) as total"))
             ->groupBy('accounts.account_name')
             ->get();
@@ -304,6 +305,10 @@ class ClientController extends Controller
         }catch(Expection $e){
             return back()->with(['error' => 'Please try again later! ('.$e.')']);
         }
+    }
+
+    public function editprofile(Request $request){
+        dd('hi');
     }
 
     //Logout

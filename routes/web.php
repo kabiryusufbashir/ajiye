@@ -49,6 +49,7 @@ Route::post('/addrecord', [ClientController::class, 'addrecord'])->name('client-
 Route::post('/addimprest', [ClientController::class, 'addimprest'])->name('client-add-imprest')->middleware('auth:staff');
 Route::post('/viewreport', [ClientController::class, 'viewreport'])->name('client-view-report')->middleware('auth:staff');
 Route::post('/addstaff', [ClientController::class, 'addstaff'])->name('client-add-staff')->middleware('auth:staff');
+Route::patch('/editprofile', [ClientController::class, 'editprofile'])->name('client-edit-profile')->middleware('auth:staff');
 Route::post('/logout-client', [ClientController::class, 'logout'])->name('logout-client');
 
     // API 

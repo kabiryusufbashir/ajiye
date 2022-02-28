@@ -25,7 +25,7 @@
         <i class="fas fa-user-circle"></i><br>
         Staff
     </div>
-    <div class="nav-front-menu">
+    <div id="profileNav" class="nav-front-menu">
         <i class="fas fa-user-circle"></i><br>
         Profile
     </div>

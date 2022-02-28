@@ -10,7 +10,7 @@
                 <form action="{{route('client-add-staff')}}" method="POST" class="px-6 lg:px-8 py-8">
                     @csrf
                     <div>
-                        <label for="details" class="text-lg font-medium">Staff Name</label><br>
+                        <label for="staff_name" class="text-lg font-medium">Staff Name</label><br>
                         <input type="text" name="staff_name" value="{{old('staff_name')}}" placeholder="Staff Name" class="input-field">
                         @error('staff_name')
                             {{$message}}

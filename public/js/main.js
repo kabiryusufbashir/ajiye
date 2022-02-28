@@ -126,3 +126,20 @@ let closeModalStaff = document.querySelector('#closeModalStaff')
     closeModalStaff.addEventListener('click', ()=>{
         staff.classList.add('hidden')
     })
+
+// Profile 
+let profileNav = document.querySelector('#profileNav')
+let profile = document.querySelector('#profile')
+let profileForm = document.querySelector('#profileForm')
+let closeModalProfile = document.querySelector('#closeModalProfile')
+
+    // Record Navigation 
+    profileNav.addEventListener('click', ()=>{
+        profile.classList.remove('hidden')
+        profileForm.classList.remove('hidden')
+    })
+
+    // Close Modal 
+    closeModalProfile.addEventListener('click', ()=>{
+        profile.classList.add('hidden')
+    })
