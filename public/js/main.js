@@ -109,3 +109,20 @@ let closeModalReport = document.querySelector('#closeModalReport')
     closeModalReport.addEventListener('click', ()=>{
         viewReport.classList.add('hidden')
     })
+
+// Staff 
+let staffNav = document.querySelector('#staffNav')
+let staff = document.querySelector('#staff')
+let staffForm = document.querySelector('#staffForm')
+let closeModalStaff = document.querySelector('#closeModalStaff')
+
+    // Record Navigation 
+    staffNav.addEventListener('click', ()=>{
+        staff.classList.remove('hidden')
+        staffForm.classList.remove('hidden')
+    })
+
+    // Close Modal 
+    closeModalStaff.addEventListener('click', ()=>{
+        staff.classList.add('hidden')
+    })

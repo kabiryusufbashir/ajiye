@@ -27,7 +27,7 @@
     color: white;
 }
 
-#accounts, #records, #imprest, #viewReport{
+#accounts, #records, #imprest, #viewReport, #staff{
     background-color: rgba(0, 0, 0, 0.8);
     position: fixed;
     z-index: 300;
@@ -38,14 +38,14 @@
     overflow: auto;
 }
 
-#accounts-header, #records-header, #imprest-header{
+#accounts-header, #records-header, #imprest-header, #staff-header{
     height: 65px;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
 }
 
-#accounts-content, #records-content, #imprest-content{
+#accounts-content, #records-content, #imprest-content, #staff-content{
     margin: 2% auto;
     width: 750px;
     background: #FFFFFF;

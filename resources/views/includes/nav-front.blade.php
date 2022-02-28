@@ -21,7 +21,7 @@
         <i class="fas fa-cash-register"></i><br>        
         View Report
     </div>
-    <div class="nav-front-menu">
+    <div id="staffNav" class="nav-front-menu">
         <i class="fas fa-user-circle"></i><br>
         Staff
     </div>

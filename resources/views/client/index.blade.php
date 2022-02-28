@@ -17,14 +17,14 @@
     @include('includes.menu-front')
     <!-- Accounts  -->
     @include('includes.accounts-front')
-    <div id="app">
-        <!-- Record  -->
-        @include('includes.records-front')
-        <!-- Imprest  -->
-        @include('includes.imprest-front')
-        <!-- View Report  -->
-        @include('includes.report-front')
-    </div>
+    <!-- Record  -->
+    @include('includes.records-front')
+    <!-- Imprest  -->
+    @include('includes.imprest-front')
+    <!-- View Report  -->
+    @include('includes.report-front')
+    <!-- Staff  -->
+    @include('includes.staff-front')
     {!! $chart->script() !!}
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ mix('/js/app.js') }}"></script>  
