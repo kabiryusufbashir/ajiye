@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Client;
 use App\Models\Account;
@@ -269,6 +270,40 @@ class ClientController extends Controller
             'balance_month', 'received',
             'balance_month_bd', 'data_count'
         ));
+    }
+
+    //Staff
+    public function addstaff(Request $request){
+        $data = $request->validate([
+            'staff_name' => ['required'],
+            'staff_email' => ['required'],
+            'staff_username' => ['required'],
+            'password' => ['required'],
+            'staff_type' => ['required'],
+        ]);
+
+        $client = Auth::guard('staff')->user()->client_id;
+        $staff_name = $data['staff_name'];
+        $staff_email = $data['staff_email'];
+        $staff_username = $data['staff_username'];
+        $password = Hash::make($data['password']);
+        $staff_type = $data['staff_type'];
+
+        try{
+            Staff::create([
+                'client_id' => $client,
+                'staff_username' => $data['staff_username'],
+                'staff_name' => $data['staff_name'],
+                'staff_email' => $data['staff_email'],
+                'password' => $password,
+                'staff_type' => $data['staff_type']
+            ]);
+
+            return redirect()->route('dashboard-client')->with('success', $staff_name.' Added'); 
+            
+        }catch(Expection $e){
+            return back()->with(['error' => 'Please try again later! ('.$e.')']);
+        }
     }
 
     //Logout

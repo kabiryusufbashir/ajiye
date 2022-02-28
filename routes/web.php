@@ -48,6 +48,7 @@ Route::post('/addsubaccount', [ClientController::class, 'addsubaccount'])->name(
 Route::post('/addrecord', [ClientController::class, 'addrecord'])->name('client-add-record')->middleware('auth:staff');
 Route::post('/addimprest', [ClientController::class, 'addimprest'])->name('client-add-imprest')->middleware('auth:staff');
 Route::post('/viewreport', [ClientController::class, 'viewreport'])->name('client-view-report')->middleware('auth:staff');
+Route::post('/addstaff', [ClientController::class, 'addstaff'])->name('client-add-staff')->middleware('auth:staff');
 Route::post('/logout-client', [ClientController::class, 'logout'])->name('logout-client');
 
     // API 
