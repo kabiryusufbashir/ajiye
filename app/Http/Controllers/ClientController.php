@@ -308,7 +308,28 @@ class ClientController extends Controller
     }
 
     public function editprofile(Request $request){
-        dd('hi');
+        
+        $data = $request->validate([
+            'old_password' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        
+        $user =  Auth::guard('staff')->user();
+        
+        if($request->old_password){
+            if (Hash::check($request->old_password, $user->password)){
+                $password = Hash::make($request->password);
+                    try{
+                        $user = Staff::where('id', $user->id)->update(['password'=> $password]);
+                        return redirect()->route('dashboard-client')->with('success', 'Password Changed');
+                    }catch(Exception $e){
+                        return back()->with('error', 'Please try again... '.$e);
+                    }
+            }else{
+                return back()->with('error', 'Please Check Your Password and Try Again');
+            }
+        }
     }
 
     //Logout

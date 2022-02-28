@@ -9,6 +9,7 @@
             <div id="profileForm" class="hidden">
                 <form action="{{route('client-edit-profile')}}" method="POST" class="px-6 lg:px-8 py-8">
                     @csrf
+                    @method('PATCH')
                     <div>
                         <label for="staff_name" class="text-lg font-medium">Name</label><br>
                         <input disabled="disabled" type="text" name="staff_name" value="{{ Auth::guard('staff')->user()->staff_name }}" class="input-field">
@@ -33,15 +34,15 @@
                         </div>
                     </div>
                     <div>
-                        <label for="password" class="text-lg font-medium">Old Password</label><br>
-                        <input type="password" name="password" value="{{old('password')}}" placeholder="Old Password" class="input-field">
-                        @error('password')
+                        <label for="old_password" class="text-lg font-medium">Old Password</label><br>
+                        <input type="password" name="old_password" value="{{old('old_password')}}" placeholder="Old Password" class="input-field">
+                        @error('old_password')
                             {{$message}}
                         @enderror
                     </div>
                     <div>
                         <label for="password" class="text-lg font-medium">New Password</label><br>
-                        <input type="password" name="new_password" value="{{old('new_password')}}" placeholder="New Password" class="input-field">
+                        <input type="password" name="password" value="{{old('password')}}" placeholder="New Password" class="input-field">
                         @error('password')
                             {{$message}}
                         @enderror
