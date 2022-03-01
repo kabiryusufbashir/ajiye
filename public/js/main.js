@@ -76,40 +76,6 @@ let closeModalRecord = document.querySelector('#closeModalRecord')
         records.classList.add('hidden')
     })
 
-//Imprest Module
-// let imprestNav = document.querySelector('#imprestNav')
-// let imprest = document.querySelector('#imprest')
-// let addImprestForm = document.querySelector('#addImprestForm')
-// let closeModalImprest = document.querySelector('#closeModalImprest')
-
-//     // Record Navigation 
-//     imprestNav.addEventListener('click', ()=>{
-//         imprest.classList.remove('hidden')
-//         addImprestForm.classList.remove('hidden')
-//     })
-
-//     // Close Modal 
-//     closeModalImprest.addEventListener('click', ()=>{
-//         imprest.classList.add('hidden')
-//     })
-
-// View Report 
-let viewReportNav = document.querySelector('#viewReportNav')
-let viewReport = document.querySelector('#viewReport')
-let viewReportForm = document.querySelector('#viewReportForm')
-let closeModalReport = document.querySelector('#closeModalReport')
-
-    // Record Navigation 
-    viewReportNav.addEventListener('click', ()=>{
-        viewReport.classList.remove('hidden')
-        viewReportForm.classList.remove('hidden')
-    })
-
-    // Close Modal 
-    closeModalReport.addEventListener('click', ()=>{
-        viewReport.classList.add('hidden')
-    })
-
 // Staff 
 let staffNav = document.querySelector('#staffNav')
 let staff = document.querySelector('#staff')
@@ -142,4 +108,21 @@ let closeModalProfile = document.querySelector('#closeModalProfile')
     // Close Modal 
     closeModalProfile.addEventListener('click', ()=>{
         profile.classList.add('hidden')
+    })
+
+// View Report 
+let viewReportNav = document.querySelector('#viewReportNav')
+let viewReport = document.querySelector('#viewReport')
+let viewReportForm = document.querySelector('#viewReportForm')
+let closeModalReport = document.querySelector('#closeModalReport')
+
+    // Record Navigation 
+    viewReportNav.addEventListener('click', ()=>{
+        viewReport.classList.remove('hidden')
+        viewReportForm.classList.remove('hidden')
+    })
+
+    // Close Modal 
+    closeModalReport.addEventListener('click', ()=>{
+        viewReport.classList.add('hidden')
     })

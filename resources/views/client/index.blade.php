@@ -11,10 +11,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 </head>
 <body>
-    <!-- Nav  -->
-    @include('includes.nav-front')
-    <!-- Menu  -->
-    @include('includes.menu-front')
+    <div class="grid grid-cols-12 gap-2">
+        <!-- Nav  -->
+        <div class="col-span-1">
+            @include('includes.nav-front')
+        </div>
+        <!-- Menu  -->
+        <div class="col-span-11">
+            @include('includes.menu-front')
+        </div>
+    </div>
     <!-- Accounts  -->
     @include('includes.accounts-front')
     <!-- Record  -->

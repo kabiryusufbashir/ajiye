@@ -1,4 +1,4 @@
-<div id="menu" class="my-4">
+<div id="menu" class="p-6">
     <!-- Notification -->
     <div class="text-xl mb-10 flex flex-row justify-between border-b py-2">
         <div>
@@ -34,6 +34,9 @@
                             @endforeach
                             <th></th>
                             <th></th>
+                            @if(Auth::user()->staff_type == 1)
+                                <th>Action</th>
+                            @endif
                         </tr>
                         <!-- Balance B/D  -->
                         <tr class="text-left">
@@ -46,6 +49,9 @@
                             @endforeach
                             <td></td>
                             <td></td>
+                            @if(Auth::user()->staff_type == 1)
+                                <td></td>
+                            @endif
                         </tr>
                         <!-- Received  -->
                         @foreach($received as $refill)
@@ -66,6 +72,18 @@
                                     @endforeach
                                 </td>
                                 <td></td>
+                                @if(Auth::user()->staff_type == 1)
+                                    <!-- Action  -->
+                                    <td class="flex px-2 justify-center">
+                                        <form action="{{ route('client-delete-received', $refill->id) }}" method="POST">
+                                            @csrf 
+                                            @method('DELETE')
+                                            <button class="relative top-2">
+                                                <span><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg></span>
+                                            </button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                         <!-- Datas  -->
@@ -84,6 +102,18 @@
                                 @endforeach
                                 <td></td>
                                 <td></td>
+                                @if(Auth::user()->staff_type == 1)
+                                    <!-- Action  -->
+                                    <td class="flex px-2 justify-center">
+                                        <form action="{{ route('client-delete-report', $report->id) }}" method="POST">
+                                            @csrf 
+                                            @method('DELETE')
+                                            <button class="relative top-2">
+                                                <span><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg></span>
+                                            </button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                         <!-- Total  -->
@@ -101,6 +131,9 @@
                                 {{ ($reports->sum('record_amount')) }}
                             </th>
                             <th></th>
+                            @if(Auth::user()->staff_type == 1)
+                                <th></th>
+                            @endif
                         </tr>
                         <!-- B/D - C/D  -->
                         <tr class="text-left">
@@ -113,6 +146,9 @@
                             @endforeach
                             <th>Received</th>
                             <th class="text-right">{{ ($received->sum('record_amount') + $balance_month_bd ) }}</th>
+                            @if(Auth::user()->staff_type == 1)
+                                <th></th>
+                            @endif
                         </tr>
                         <!-- B/D - C/D  -->
                         <tr class="text-left">
@@ -125,6 +161,9 @@
                             @endforeach
                             <th>Expenditure</th>
                             <th class="text-right">{{ ($reports->sum('record_amount')) }}</th>
+                            @if(Auth::user()->staff_type == 1)
+                                <th></th>
+                            @endif
                         </tr>
                         <!-- Balance C/D  -->
                         <tr class="text-left">
@@ -137,6 +176,9 @@
                             @endforeach
                             <th>Balance c/d</th>
                             <th class="text-right">{{ ($received->sum('record_amount') + $balance_month_bd ) - ($reports->sum('record_amount')) }}</th>
+                            @if(Auth::user()->staff_type == 1)
+                                <th></th>
+                            @endif
                         </tr>
                     </tbody>
                 </table>

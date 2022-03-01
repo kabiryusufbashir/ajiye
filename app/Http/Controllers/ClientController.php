@@ -259,8 +259,6 @@ class ClientController extends Controller
         $received_last_month = Record::where('timestamp', '<=', $month_timestamp)->where('client_id', $client)->where('account_id', $imprest_id->id)->sum('record_amount');
         $expenditure_last_month = Record::where('timestamp', '<=', $month_timestamp)->where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->sum('record_amount');
         $balance_month_bd = $received_last_month - $expenditure_last_month;
-        
-        // dd($month_timestamp);
 
         return view('client.view-report', compact(
             'report_columns', 'month', 
@@ -271,6 +269,28 @@ class ClientController extends Controller
             'balance_month', 'received',
             'balance_month_bd', 'data_count'
         ));
+    }
+
+    //Delete Received
+    public function deletereceived($id){
+        $received = Record::findOrFail($id);
+        try{
+            $received->delete();
+            return redirect()->route('dashboard-client')->with('success', 'Imprest Deleted');
+        }catch(Exception $e){
+            return redirect()->route('dashboard-client')->with('error', 'Please try again... '.$e);
+        }
+    }
+
+    //Delete Report
+    public function deletereport($id){
+        $report = Record::findOrFail($id);
+        try{
+            $report->delete();
+            return redirect()->route('dashboard-client')->with('success', 'Report Deleted');
+        }catch(Exception $e){
+            return redirect()->route('dashboard-client')->with('error', 'Please try again... '.$e);
+        }
     }
 
     //Staff

@@ -1,4 +1,4 @@
-<div id="menu" class="my-4">
+<div id="menu" class="p-6">
     <!-- Notification -->
     <div class="text-xl mb-10 flex flex-row justify-between border-b py-2">
         <div>

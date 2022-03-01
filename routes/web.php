@@ -52,6 +52,12 @@ Route::post('/addstaff', [ClientController::class, 'addstaff'])->name('client-ad
 Route::patch('/editprofile', [ClientController::class, 'editprofile'])->name('client-edit-profile')->middleware('auth:staff');
 Route::post('/logout-client', [ClientController::class, 'logout'])->name('logout-client');
 
+//Received
+Route::delete('/received/{recieved}', [ClientController::class, 'deletereceived'])->name('client-delete-received')->middleware('auth:staff');
+
+//Reports
+Route::delete('/report/{report}', [ClientController::class, 'deletereport'])->name('client-delete-report')->middleware('auth:staff');
+    
     // API 
     Route::get('/api/getAccount', [APIController::class, 'getAccount']);
     Route::get('/api/getSubaccount', [APIController::class, 'getSubaccount']);

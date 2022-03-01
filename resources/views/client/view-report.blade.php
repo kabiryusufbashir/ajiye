@@ -10,20 +10,29 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="container">
+<div class="grid grid-cols-12 gap-2">
         <!-- Nav  -->
-        @include('includes.nav-front')
+        <div class="col-span-1">
+            @include('includes.nav-front')
+        </div>
         <!-- Menu  -->
-        @include('includes.report-view-front')
-        <!-- Accounts  -->
-        @include('includes.accounts-front')
-        <!-- Record  -->
-        @include('includes.records-front')
-        <!-- Imprest  -->
-        @include('includes.imprest-front')
-        <!-- View Report  -->
-        @include('includes.report-front')
+        <div class="col-span-11">
+            @include('includes.report-view-front')
+        </div>
     </div>
+    <!-- Accounts  -->
+    @include('includes.accounts-front')
+    <!-- Record  -->
+    @include('includes.records-front')
+    <!-- Imprest  -->
+    @include('includes.imprest-front')
+    <!-- View Report  -->
+    @include('includes.report-front')
+    <!-- Staff  -->
+    @include('includes.staff-front')
+    <!-- Profile  -->
+    @include('includes.profile-front')
+    
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ mix('/js/app.js') }}"></script>  
 </body>
