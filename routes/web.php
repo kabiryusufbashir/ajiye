@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ClientStaffController;
 use App\Http\Controllers\APIController;
 
 
@@ -57,9 +58,12 @@ Route::delete('/received/{recieved}', [ClientController::class, 'deletereceived'
 
 //Reports
 Route::delete('/report/{report}', [ClientController::class, 'deletereport'])->name('client-delete-report')->middleware('auth:staff');
-    
-    // API 
-    Route::get('/api/getAccount', [APIController::class, 'getAccount']);
-    Route::get('/api/getSubaccount', [APIController::class, 'getSubaccount']);
-    Route::get('/api/getMonth', [APIController::class, 'getmonth']);
-    Route::get('/api/getYear', [APIController::class, 'getYear']);
+
+//Client Staff Section
+Route::get('/staff', [ClientStaffController::class, 'index'])->name('dashboard-staff')->middleware('auth:staff');
+
+// API 
+Route::get('/api/getAccount', [APIController::class, 'getAccount']);
+Route::get('/api/getSubaccount', [APIController::class, 'getSubaccount']);
+Route::get('/api/getMonth', [APIController::class, 'getmonth']);
+Route::get('/api/getYear', [APIController::class, 'getYear']);

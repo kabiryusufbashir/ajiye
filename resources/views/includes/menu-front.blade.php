@@ -32,7 +32,7 @@
                 <span><i class="fas fa-book"></i></span> 
                 <span class="text-white text-lg">Balance: ₦{{ $balance }}</span>
             </div>
-            <a href="#">
+            <a href="{{ route('dashboard-staff') }}">
                 <div class="stats-div">
                     <span><i class="fas fa-user-circle"></i></span> 
                     <span class="text-white text-lg">Staff: {{ count($staff) }}</span>
