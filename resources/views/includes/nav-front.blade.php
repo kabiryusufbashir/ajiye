@@ -23,7 +23,7 @@
     </div>
     <div id="staffNav" class="nav-front-menu">
         <i class="fas fa-user-circle"></i><br>
-        Staff
+        New Staff
     </div>
     <div id="profileNav" class="nav-front-menu">
         <i class="fas fa-user-circle"></i><br>

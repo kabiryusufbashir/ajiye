@@ -32,9 +32,15 @@
                 <span><i class="fas fa-book"></i></span> 
                 <span class="text-white text-lg">Balance: ₦{{ $balance }}</span>
             </div>
+            <a href="#">
+                <div class="stats-div">
+                    <span><i class="fas fa-user-circle"></i></span> 
+                    <span class="text-white text-lg">Staff: {{ count($staff) }}</span>
+                </div>
+            </a>
             <div class="stats-div">
-                <span><i class="fas fa-user-circle"></i></span> 
-                <span class="text-white text-lg">Staff: {{ count($staff) }}</span>
+                <span><i class="fas fa-book"></i></span> 
+                <span class="text-white text-lg">Account: {{ count($accounts) }}</span>
             </div>
         </div>
     </div>
