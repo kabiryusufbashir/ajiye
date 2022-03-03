@@ -42,4 +42,9 @@ class ClientStaffController extends Controller
         
         return view('client.staff', compact('business', 'balance', 'staff', 'accounts', 'months', 'years'));
     }
+
+    public function editstaff($staff){
+        $staff = Staff::findOrFail($staff);
+        return view('client.staff.edit', compact('staff'));
+    }
 }
