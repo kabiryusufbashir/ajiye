@@ -46,12 +46,17 @@ class GlobalData
         $months = Record::select('month')->where('client_id', $client)->orderby('month', 'asc')->distinct()->get();
         $years = Record::select('year')->where('client_id', $client)->orderby('year', 'asc')->distinct()->get();
 
+        $imprest = Record::where('account_id', $imprest_id->id)->where('client_id', $client)->sum('record_amount');
+        $records = Record::where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->sum('record_amount');
+
         View::share('business', $business);
         View::share('balance', $balance);
         View::share('staff', $staff);
         View::share('accounts', $accounts);
         View::share('months', $months);
         View::share('years', $years);
+        View::share('imprest', $imprest);
+        View::share('records', $records);
 
         return $next($request);
     }

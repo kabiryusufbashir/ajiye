@@ -6,13 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-use App\Models\Client;
-use App\Models\Account;
-use App\Models\Accountcategory;
-use App\Models\Record;
-use App\Models\Imprest;
 use App\Models\Staff;
-use DB;
 
 class ClientStaffController extends Controller
 {

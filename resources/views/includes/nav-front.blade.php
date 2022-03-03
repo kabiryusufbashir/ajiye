@@ -25,6 +25,12 @@
         <i class="fas fa-user-circle"></i><br>
         New Staff
     </div>
+    <a href="{{ route('dashboard-staff') }}">
+        <div class="nav-front-menu">
+            <i class="fas fa-user-circle"></i><br>
+            All Staff
+        </div>
+    </a>
     <div id="profileNav" class="nav-front-menu">
         <i class="fas fa-user-circle"></i><br>
         Profile
