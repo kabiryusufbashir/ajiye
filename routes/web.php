@@ -7,7 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ClientStaffController;
 use App\Http\Controllers\APIController;
-
+use App\Http\Middleware\GlobalData;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,30 +43,33 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 
 //Client
-Route::get('/home', [ClientController::class, 'index'])->name('dashboard-client')->middleware('auth:staff');
-Route::post('/addaccount', [ClientController::class, 'addaccount'])->name('client-add-account')->middleware('auth:staff');
-Route::post('/addsubaccount', [ClientController::class, 'addsubaccount'])->name('client-add-sub-account')->middleware('auth:staff');
-Route::post('/addrecord', [ClientController::class, 'addrecord'])->name('client-add-record')->middleware('auth:staff');
-Route::post('/addimprest', [ClientController::class, 'addimprest'])->name('client-add-imprest')->middleware('auth:staff');
-Route::post('/viewreport', [ClientController::class, 'viewreport'])->name('client-view-report')->middleware('auth:staff');
-Route::post('/addstaff', [ClientController::class, 'addstaff'])->name('client-add-staff')->middleware('auth:staff');
-Route::patch('/editprofile', [ClientController::class, 'editprofile'])->name('client-edit-profile')->middleware('auth:staff');
-Route::post('/logout-client', [ClientController::class, 'logout'])->name('logout-client');
-
-//Received
-Route::delete('/received/{recieved}', [ClientController::class, 'deletereceived'])->name('client-delete-received')->middleware('auth:staff');
-
-//Reports
-Route::delete('/report/{report}', [ClientController::class, 'deletereport'])->name('client-delete-report')->middleware('auth:staff');
-
-//Client Staff Section
-Route::get('/staff', [ClientStaffController::class, 'index'])->name('dashboard-staff')->middleware('auth:staff');
-Route::get('/staff/{staff}/edit', [ClientStaffController::class, 'editstaff'])->name('client-staff-edit')->middleware('auth:staff');
-Route::post('/deletestaff', [ClientStaffController::class, 'deletestaff'])->name('client-staff-delete')->middleware('auth:staff');
-Route::post('/resetpasswordstaff', [ClientStaffController::class, 'resetstaffpassword'])->name('client-staff-reset-password')->middleware('auth:staff');
-
-// API 
-Route::get('/api/getAccount', [APIController::class, 'getAccount']);
-Route::get('/api/getSubaccount', [APIController::class, 'getSubaccount']);
-Route::get('/api/getMonth', [APIController::class, 'getmonth']);
-Route::get('/api/getYear', [APIController::class, 'getYear']);
+Route::middleware([GlobalData::class])->group(function(){
+    
+    Route::get('/home', [ClientController::class, 'index'])->name('dashboard-client')->middleware('auth:staff');
+    Route::post('/addaccount', [ClientController::class, 'addaccount'])->name('client-add-account')->middleware('auth:staff');
+    Route::post('/addsubaccount', [ClientController::class, 'addsubaccount'])->name('client-add-sub-account')->middleware('auth:staff');
+    Route::post('/addrecord', [ClientController::class, 'addrecord'])->name('client-add-record')->middleware('auth:staff');
+    Route::post('/addimprest', [ClientController::class, 'addimprest'])->name('client-add-imprest')->middleware('auth:staff');
+    Route::post('/viewreport', [ClientController::class, 'viewreport'])->name('client-view-report')->middleware('auth:staff');
+    Route::post('/addstaff', [ClientController::class, 'addstaff'])->name('client-add-staff')->middleware('auth:staff');
+    Route::patch('/editprofile', [ClientController::class, 'editprofile'])->name('client-edit-profile')->middleware('auth:staff');
+    Route::post('/logout-client', [ClientController::class, 'logout'])->name('logout-client');
+    
+    //Received
+    Route::delete('/received/{recieved}', [ClientController::class, 'deletereceived'])->name('client-delete-received')->middleware('auth:staff');
+    
+    //Reports
+    Route::delete('/report/{report}', [ClientController::class, 'deletereport'])->name('client-delete-report')->middleware('auth:staff');
+    
+    //Client Staff Section
+    Route::get('/staff', [ClientStaffController::class, 'index'])->name('dashboard-staff')->middleware('auth:staff');
+    Route::get('/staff/{staff}/edit', [ClientStaffController::class, 'editstaff'])->name('client-staff-edit')->middleware('auth:staff');
+    Route::post('/deletestaff', [ClientStaffController::class, 'deletestaff'])->name('client-staff-delete')->middleware('auth:staff');
+    Route::post('/resetpasswordstaff', [ClientStaffController::class, 'resetstaffpassword'])->name('client-staff-reset-password')->middleware('auth:staff');
+    
+    // API 
+    Route::get('/api/getAccount', [APIController::class, 'getAccount']);
+    Route::get('/api/getSubaccount', [APIController::class, 'getSubaccount']);
+    Route::get('/api/getMonth', [APIController::class, 'getmonth']);
+    Route::get('/api/getYear', [APIController::class, 'getYear']);
+});
