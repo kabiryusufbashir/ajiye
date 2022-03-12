@@ -37,4 +37,16 @@ class ClientStaffController extends Controller
             return back()->with('error', 'Please try again... '.$e);
         }
     }
+
+    public function deletestaff($id)
+    {
+        $staff = Staff::findOrFail($id);
+        
+        try{
+            $staff->delete();
+            return back()->with('success', 'Staff deleted');
+        }catch(Exception $e){
+            return back()->with('error', 'Please try again... '.$e);
+        }
+    }
 }
