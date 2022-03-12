@@ -43,7 +43,9 @@ class ClientStaffController extends Controller
         $staff = Staff::findOrFail($id);
         
         try{
-            $staff->delete();
+            $staff = Staff::where('id', $id)->update([
+                'staff_status'=> 0
+            ]);
             return back()->with('success', 'Staff deleted');
         }catch(Exception $e){
             return back()->with('error', 'Please try again... '.$e);
