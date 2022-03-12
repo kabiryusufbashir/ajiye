@@ -22,4 +22,19 @@ class ClientStaffController extends Controller
         $staff = Staff::findOrFail($staff);
         return view('client.staff.edit', compact('staff'));
     }
+
+    public function updatestaff(Request $request, $id){
+        $data = $request->validate([
+            'staff_name' => ['required'],
+            'staff_email' => ['required'],
+            'staff_type' => ['required'],
+        ]);
+
+        try{
+            $staff = Staff::where('id', $id)->update($data);
+            return redirect()->route('dashboard-staff')->with('success', 'Staff Updated');
+        }catch(Exception $e){
+            return back()->with('error', 'Please try again... '.$e);
+        }
+    }
 }

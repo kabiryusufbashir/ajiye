@@ -42,7 +42,7 @@
                 </div>
                 <div>
                     <label for="staff_username" class="text-lg font-medium">Staff Username</label><br>
-                    <input required type="text" name="staff_username" value="{{ $staff->staff_username }}" placeholder="Staff Username" class="input-field">
+                    <input disabled="disabled" required type="text" name="staff_username" value="{{ $staff->staff_username }}" placeholder="Staff Username" class="input-field">
                     @error('staff_username')
                         {{$message}}
                     @enderror
