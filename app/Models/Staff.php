@@ -22,7 +22,8 @@ class Staff extends Authenticatable
         'staff_email',
         'password',
         'staff_name',
-        'staff_type'
+        'staff_type',
+        'staff_status'
     ];
 
     public function client(){

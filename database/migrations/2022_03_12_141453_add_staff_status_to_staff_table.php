@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStaffTypeToStaffsTable extends Migration
+class AddStaffStatusToStaffTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddStaffTypeToStaffsTable extends Migration
      */
     public function up()
     {
-        Schema::table('staffs', function (Blueprint $table) {
-            //
+        Schema::table('staff', function (Blueprint $table) {
+            $table->integer('staff_status');
         });
     }
 
@@ -25,7 +25,7 @@ class AddStaffTypeToStaffsTable extends Migration
      */
     public function down()
     {
-        Schema::table('staffs', function (Blueprint $table) {
+        Schema::table('staff', function (Blueprint $table) {
             //
         });
     }

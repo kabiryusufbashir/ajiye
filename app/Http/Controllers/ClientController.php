@@ -305,7 +305,8 @@ class ClientController extends Controller
                 'staff_name' => $data['staff_name'],
                 'staff_email' => $data['staff_email'],
                 'password' => $password,
-                'staff_type' => $data['staff_type']
+                'staff_type' => $data['staff_type'],
+                'staff_status' => 1
             ]);
 
             return redirect()->route('dashboard-client')->with('success', $staff_name.' Added'); 
