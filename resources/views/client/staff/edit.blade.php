@@ -23,8 +23,9 @@
         </div>
         <!-- Section  -->
         <div class="w-1/2 mx-auto shadow-lg">
-            <form action="{{route('client-add-staff')}}" method="POST" class="px-6 lg:px-8 py-8">
+            <form action="{{ route('client-staff-update', $staff->id) }}" method="POST" class="px-6 lg:px-8 py-8">
                 @csrf
+                @method('PATCH')
                 <div>
                     <label for="staff_name" class="text-lg font-medium">Staff Name</label><br>
                     <input type="text" name="staff_name" value="{{ $staff->staff_name }}" placeholder="Staff Name" class="input-field">
