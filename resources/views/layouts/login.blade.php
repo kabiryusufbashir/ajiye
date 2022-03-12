@@ -19,7 +19,7 @@
             @yield('login')
         </div>
         <!-- Trademark  -->
-        <div id="trademark" class="text-white flex flex-row justify-between border-b my-12 text-center flex justify-content">
+        <div id="trademark" class="text-white flex flex-row justify-between border-b my-12 text-center justify-content">
             <div>Imprest System</div>
             <div>A Product of Team Piccolo v 1.0</div>
         </div>

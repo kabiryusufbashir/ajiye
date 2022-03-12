@@ -51,4 +51,19 @@ class ClientStaffController extends Controller
             return back()->with('error', 'Please try again... '.$e);
         }
     }
+
+    public function resetstaffpassword($id)
+    {
+        $staff = Staff::findOrFail($id);
+        $password = Hash::make(1234567890);
+        
+        try{
+            $staff = Staff::where('id', $id)->update([
+                'password'=> $password
+            ]);
+            return back()->with('success', 'Staff Password Reset');
+        }catch(Exception $e){
+            return back()->with('error', 'Please try again... '.$e);
+        }
+    }
 }

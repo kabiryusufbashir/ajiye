@@ -41,9 +41,7 @@ class ClientController extends Controller
         $chart->labels($dataset->pluck('account_name'));
         $chart->dataset('Expenditure Statistics', 'bar', $dataset->pluck('total'))->options(['backgroundColor' => '#3CB371']);
         
-        $staff = Staff::where('client_id', $client)->get();
-
-        return view('client.index', compact('chart', 'staff'));
+        return view('client.index', compact('chart'));
     }
 
     //Account

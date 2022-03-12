@@ -35,7 +35,7 @@ class GlobalData
         //Getting Imprest ID
         $imprest_id = Account::select('id')->where('client_id', $client)->where('account_name', 'imprest')->first();
 
-        $staff = Staff::where('client_id', $client)->get();
+        $staff = Staff::where('client_id', $client)->where('staff_status', 1)->get();
         $imprest = Record::where('account_id', $imprest_id->id)->where('client_id', $client)->sum('record_amount');
         $records = Record::where('client_id', $client)->where('account_id', '!=', $imprest_id->id)->sum('record_amount');
 

@@ -66,7 +66,7 @@ Route::middleware([GlobalData::class])->group(function(){
     Route::get('/staff/{staff}/edit', [ClientStaffController::class, 'editstaff'])->name('client-staff-edit')->middleware('auth:staff');
     Route::patch('/staff/{staff}/update', [ClientStaffController::class, 'updatestaff'])->name('client-staff-update')->middleware('auth:staff');
     Route::delete('/staff/{staff}', [ClientStaffController::class, 'deletestaff'])->name('client-staff-delete')->middleware('auth:staff');
-    Route::post('/resetpasswordstaff', [ClientStaffController::class, 'resetstaffpassword'])->name('client-staff-reset-password')->middleware('auth:staff');
+    Route::post('/resetpasswordstaff/{staff}', [ClientStaffController::class, 'resetstaffpassword'])->name('client-staff-reset-password')->middleware('auth:staff');
     
     // API 
     Route::get('/api/getAccount', [APIController::class, 'getAccount']);
